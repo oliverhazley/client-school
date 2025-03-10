@@ -10,6 +10,7 @@ Tämä on Health Diary -sovelluksen README-tiedosto.
 > ![Dashboard-näkymä](images/dashboard.png)
 
 
+---
 
 ## 2. Linkki sovellukseen (Front-end)
 
@@ -31,6 +32,7 @@ Tämä on Health Diary -sovelluksen README-tiedosto.
 ## 4. Linkki API-dokumentaatioon (apidoc)
 
 
+---
 
 ## 5. Tietokannan kuvaus
 
