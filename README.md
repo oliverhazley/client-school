@@ -120,6 +120,7 @@ Tämä on Health Diary -sovelluksen README-tiedosto.
 - React (frontend)
 - Shadcn/ui inspired components (taken from my other projects i have worked on)
     - tabs.jsx complied of component pieces from other projects
+- Recharts
 - Express (backend)
 - MySQL / MariaDB (tietokanta)
 - Axios (API-kutsut)
