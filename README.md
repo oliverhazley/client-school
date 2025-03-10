@@ -4,10 +4,39 @@ Tämä on Health Diary -sovelluksen README-tiedosto.
 
 ## 1. Kuvakaappaukset käyttöliitymästä
 
+**Landing page**
+![image](https://github.com/user-attachments/assets/fb632779-8ee7-4507-aac5-4fbe7abd7386)
 
+**Login**
+![image](https://github.com/user-attachments/assets/e241423e-e1ca-4ebd-8fca-99337c2c864b)
 
-> **Esimerkki**  
-> ![Dashboard-näkymä](images/dashboard.png)
+**Sign up**
+![image](https://github.com/user-attachments/assets/7c167305-d360-4c70-8106-553c46a43717)
+
+**User dashboard daily summary**
+![image](https://github.com/user-attachments/assets/9a1c8ca0-29d5-428e-a705-22b2ad91d02e)
+
+**User dashboard medications**
+![image](https://github.com/user-attachments/assets/3074e319-8780-4764-b613-860118d60ae6)
+
+**User dashboard daily water**
+![image](https://github.com/user-attachments/assets/91934cc4-05c4-4c55-9d25-ae9c84d1ab1c)
+
+**User dashboard exercises**
+![image](https://github.com/user-attachments/assets/0e6abf2d-628c-406c-b5fa-08e2959ca4f7)
+
+**User dashboard new journal entry**
+![image](https://github.com/user-attachments/assets/4a5b25cd-8e9a-431f-b405-5cb8231b024f)
+
+**User dashboard past journal entries**
+![image](https://github.com/user-attachments/assets/201c310b-9803-464e-a5d6-23fac4fefb0b)
+
+**User dashboard data trends**
+![image](https://github.com/user-attachments/assets/c3b5262b-bdde-4aec-a67e-c1b5aa40e465)
+
+![image](https://github.com/user-attachments/assets/b53f7351-608a-42f3-b5a2-61324db090b2)
+
+![image](https://github.com/user-attachments/assets/47bdc72c-0718-477c-8aaa-fcea49a321a1)
 
 
 ---
@@ -50,15 +79,15 @@ Tämä on Health Diary -sovelluksen README-tiedosto.
 - Kirjautuminen (Login) + JWT/istunnonhallinta
 
 **(User dashboard)**
-  - Trendi data - Päivittäin, viikotain, kuukausittain
-  - Sovellus on täysin responsiivinen
+
+- Sovellus on täysin responsiivinen
 - Daily summary
 - Päiväkirjamerkintöjen luonti + seuranta
 - Vedenkulutuksen syöttö ja seuranta
 - Lääkitysten syöttö ja seuranta + poistaminen
-- Liikuntasuoritusten kirjaaminen + seuranta
-- Unen syöttö ja seuranta
-- Mood syöttö ja seuranta
+- Liikuntasuoritusten kirjaaminen + seuranta (+ trendi data)
+- Unen syöttö ja seuranta (+ trendi data)
+- Mood syöttö ja seuranta (+ trendi data)
 
 **(Admin dashboard)**
 
