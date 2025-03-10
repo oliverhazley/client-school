@@ -50,7 +50,8 @@ Tämä on Health Diary -sovelluksen README-tiedosto.
 - Kirjautuminen (Login) + JWT/istunnonhallinta
 
 **(User dashboard)**
-
+  - Trendi data - Päivittäin, viikotain, kuukausittain
+  - Sovellus on täysin responsiivinen
 - Daily summary
 - Päiväkirjamerkintöjen luonti + seuranta
 - Vedenkulutuksen syöttö ja seuranta
@@ -58,8 +59,6 @@ Tämä on Health Diary -sovelluksen README-tiedosto.
 - Liikuntasuoritusten kirjaaminen + seuranta
 - Unen syöttö ja seuranta
 - Mood syöttö ja seuranta
-  - Trendi data - Päivittäin, viikotain, kuukausittain
-  - Sovellus on täysin responsiivinen
 
 **(Admin dashboard)**
 
@@ -108,7 +107,7 @@ Tämä on Health Diary -sovelluksen README-tiedosto.
 
 ---
 
-##Kiitos! 
+## Kiitos! 
   
 
 
