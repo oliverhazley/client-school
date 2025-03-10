@@ -1,9 +1,14 @@
 // dashboard.jsx
 
+// THIS IS A LOOOONG FILE, SO I TRIED TO MAKE THE COMMENTS PRETTY, TO AT LEAST SPLIT IT UP ABIT.
+// IT STARTED OFF SMALLER AND SMOOTHER, BUT THEN I GOT CARRIED AWAY WITH ADDING NEW STUFF
+// I PLANNED TO SPLIT IT INTO SMALLER COMPONENTS, BUT RAN OUT OF TIME, SORRY !!!!
+// HOPEFULLY ITS NOT TOO PAINFUL TO READ
+
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
-// UI components + icons
+// UI components + icons from tabs (previous projects)
 import {
   Tabs,
   TabsList,
@@ -43,7 +48,7 @@ import NotificationPopup from './NotificationPopup'
 
 // ----------------------------------------------------
 // Helper: format a date (string) to a pretty display
-// for charts or listing
+// for charts or listing - made with the help of chatgpt
 // ----------------------------------------------------
 function formatDate(dateStr) {
   if (!dateStr) return ''
@@ -57,7 +62,7 @@ function formatDate(dateStr) {
 
 // ----------------------------------------------------
 // Helper: getLocalYMD => "YYYY-MM-DD" in local time
-// e.g. 2025-03-07 if it's March 7 where you are.
+// - made with the help of chatgpt
 // ----------------------------------------------------
 function getLocalYMD(dateStr) {
   const d = new Date(dateStr)
@@ -80,20 +85,20 @@ function Dashboard({ token }) {
   // For toggling "taken" meds
   const [medsTaken, setMedsTaken] = useState({})
 
-  // New Journal form
+  // New Journal form (base values)
   const [sleepHours, setSleepHours] = useState(7)
   const [moodValue, setMoodValue] = useState(5)
   const [weightValue, setWeightValue] = useState(70)
   const [notes, setNotes] = useState('')
 
-  // New Exercise form
+  // New Exercise form (base values)
   const [newExercise, setNewExercise] = useState({
     type: '',
     duration: 30,
     intensity: 'low'
   })
 
-  // New Medication form
+  // New Medication form (empty base values)
   const [newMed, setNewMed] = useState({
     name: '',
     dosage: '',
@@ -116,7 +121,7 @@ function Dashboard({ token }) {
 
 
   // ----------------------------------------------------
-  // Fetch data on mount or token changes
+  // Fetch data on mount or token changes so we can paint correct info
   // ----------------------------------------------------
   useEffect(() => {
     if (!token) return
@@ -129,7 +134,7 @@ function Dashboard({ token }) {
 
 
   // ----------------------------------------------------
-  // Reset meds if the day changed
+  // Reset meds if the day changed (the memory for meds taken is stored in local)
   // ----------------------------------------------------
   function checkDailyReset() {
     const todayLocal = getLocalYMD(new Date()) // e.g. "2025-03-07"
@@ -148,7 +153,7 @@ function Dashboard({ token }) {
 
 
   // ----------------------------------------------------
-  // API fetchers
+  // API fetchers // commented out the debugging but left them incase i want to come back to this one day
   // ----------------------------------------------------
   async function fetchEntries() {
     try {
@@ -254,7 +259,7 @@ function Dashboard({ token }) {
   // ----------------------------------------------------
   // Water
   // ----------------------------------------------------
-  function incrementWater() {
+  function incrementWater() { // adds +1 water
     setTodayCups(prev => prev + 1)
   }
 
@@ -303,7 +308,7 @@ function Dashboard({ token }) {
         headers: { Authorization: `Bearer ${token}` }
       })
       setSuccessMsg('Exercise added!')
-      setNewExercise({ type: '', duration: 30, intensity: 'low' })
+      setNewExercise({ type: '', duration: 30, intensity: 'low' }) //placeholder values
       fetchExercises()
     } catch (err) {
       console.error('addExercise error', err)
@@ -313,7 +318,7 @@ function Dashboard({ token }) {
 
   // Sort exercises newest-first
   const sortedExercises = [...exercises].sort((a, b) => {
-    // We can compare actual Date objects:
+    // compare actual date objects:
     return new Date(b.date) - new Date(a.date)
   })
   // Show either all or the first 3
@@ -354,12 +359,12 @@ function Dashboard({ token }) {
 
 
   // ----------------------------------------------------
-  // DAILY SUMMARY: local date approach
+  // fucking DAILY SUMMARY at top of page
   // ----------------------------------------------------
-  // 1) Today's local date
+  // Todays local date
   const todayLocal = getLocalYMD(new Date()) // e.g. "2025-03-07"
 
-  // 2) Sum of today's exercise
+  // Sum of todays exercise
   const todayExercises = sortedExercises.filter(ex => {
     return getLocalYMD(ex.date) === todayLocal
   })
@@ -367,12 +372,12 @@ function Dashboard({ token }) {
     (sum, ex) => sum + (ex.duration || 0), 0
   )
 
-  // 3) Water for today
+  // Water for today
   const todayWater = waterLogs
     .filter(w => getLocalYMD(w.consumption_date) === todayLocal)
     .reduce((sum, w) => sum + (w.cups || 0), 0)
 
-  // 4) Journal entry for today => sleep, mood, weight, notes
+  // Journal entry for today => sleep, mood, weight, notes
   const todayEntry = sortedEntries.find(e => {
     return getLocalYMD(e.entry_date) === todayLocal
   })
@@ -381,7 +386,7 @@ function Dashboard({ token }) {
   const todayWeight = todayEntry ? todayEntry.weight       : '-'
   const todayNotes  = todayEntry ? todayEntry.notes        : '-'
 
-  // 5) Meds => did user take all?
+  // Meds => did user take all?
   // If user has no meds, we show "No meds"
   const medsCount = medications.length
   const medsTakenCount = Object.values(medsTaken).filter(t => t).length
@@ -393,10 +398,7 @@ function Dashboard({ token }) {
 
   // ----------------------------------------------------
   // CHARTS
-  // (Daily/weekly/monthly) => We'll keep the old logic
-  // If you want it in local time, you can also replace
-  // some code with getLocalYMD in the grouping.
-  // But "today" fix is the biggest part.
+  // (Daily/weekly/monthly)  - these were made with the help of chatgpt
   // ----------------------------------------------------
   function getCutoff() {
     const now = new Date()
@@ -411,7 +413,7 @@ function Dashboard({ token }) {
     return cutoff
   }
 
-  // Group water logs by local date
+  // Group water logs by local date for water trends
   function groupWaterByDate(logs) {
     const map = {}
     for (let w of logs) {
@@ -477,7 +479,17 @@ function Dashboard({ token }) {
         {/* TITLE */}
         <h1 className="text-3xl font-bold">Dashboard</h1>
 
-        {/* DAILY SUMMARY */}
+
+
+        {/*
+
+
+
+        ---------------  DAILY SUMMARY ------------------
+
+
+
+        */}
         <Card>
           <CardHeader>
             <CardTitle className="text-xl font-semibold">Daily Summary</CardTitle>
@@ -488,13 +500,8 @@ function Dashboard({ token }) {
           <div className="px-6 mb-4">
             <div className="h-px w-full bg-slate-700" />
           </div>
-
-          {/*
-             Change space-y-* to control vertical gap.
-             space-y-4 = moderate space
-             space-y-6 or space-y-8 = bigger gaps
-          */}
           <CardContent className="space-y-4">
+
             {/* MEDICATION */}
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
@@ -583,7 +590,13 @@ function Dashboard({ token }) {
         </Card>
 
 
-        {/* MEDICATION CARD */}
+        {/*
+
+        ---------------   MEDICATION CARD ---------------
+
+        */}
+
+
         <Card>
           <CardHeader>
             <CardTitle className="text-lg font-semibold">Your Medications</CardTitle>
@@ -654,7 +667,13 @@ function Dashboard({ token }) {
         </Card>
 
 
-        {/* WATER CARD */}
+        {/*
+
+        ---------------------- WATER CARD -------------------------
+
+        */}
+
+
         <Card>
           <CardHeader>
             <CardTitle className="text-lg font-semibold">Daily Water</CardTitle>
@@ -701,7 +720,13 @@ function Dashboard({ token }) {
         </Card>
 
 
-        {/* EXERCISES CARD */}
+        {/*
+
+        ---------------------  EXERCISES CARD -------------------------
+
+        */}
+
+
         <Card>
           <CardHeader>
             <CardTitle className="text-lg font-semibold">Exercises</CardTitle>
@@ -787,7 +812,13 @@ function Dashboard({ token }) {
         </Card>
 
 
-        {/* NEW JOURNAL ENTRY */}
+        {/*
+
+        -------------------  NEW JOURNAL ENTRY ------------------------
+
+         */}
+
+
         <Card>
           <CardHeader>
             <CardTitle className="text-lg font-semibold">New Journal Entry</CardTitle>
@@ -858,7 +889,13 @@ function Dashboard({ token }) {
         </Card>
 
 
-        {/* PAST DIARY ENTRIES */}
+        {/*
+
+        ---------------------- PAST DIARY ENTRIES ---------------------------
+
+         */}
+
+
         <Card>
           <CardHeader>
             <CardTitle className="text-lg font-semibold">Past Diary Entries</CardTitle>
@@ -894,7 +931,11 @@ function Dashboard({ token }) {
         </Card>
 
 
-        {/* TIMEFRAME TABS FOR CHARTS */}
+        {/*
+
+        ----------------------- CHARTS -----------------------
+
+        */}
         <Tabs value={timeframe} onValueChange={setTimeframe}>
           <TabsList className="flex justify-center bg-slate-800 border-slate-700 my-4">
             <TabsTrigger value="daily" className="data-[state=active]:bg-slate-700">
