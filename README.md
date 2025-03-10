@@ -73,6 +73,10 @@ Tämä on Health Diary -sovelluksen README-tiedosto.li
 
   ![image](https://github.com/user-attachments/assets/8d70a38b-5bab-4c43-bcf2-e3e68d1b62a9)
 
+  ![image](https://github.com/user-attachments/assets/c9a5d067-4d85-46b2-a4d0-ba6f37fc98ca)
+
+  Käytettään cascade delete. Eli kun käyttäjä poistettaan, kaikki heidän data myös poistetaan muista taulukoista.
+
 ---
 
 ## 6. Toiminnallisuudet
