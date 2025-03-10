@@ -1,70 +1,147 @@
-# Getting Started with Create React App
+# Health Diary - CheckYoSelf
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Tämä on Health Diary -sovelluksen README-tiedosto.
 
-## Available Scripts
+## 1. Kuvakaappaukset käyttöliitymästä
 
-In the project directory, you can run:
+**Landing page**
+![image](https://github.com/user-attachments/assets/fb632779-8ee7-4507-aac5-4fbe7abd7386)
 
-### `npm start`
+**Login**
+![image](https://github.com/user-attachments/assets/e241423e-e1ca-4ebd-8fca-99337c2c864b)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Sign up**
+![image](https://github.com/user-attachments/assets/7c167305-d360-4c70-8106-553c46a43717)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**User dashboard daily summary**
+![image](https://github.com/user-attachments/assets/9a1c8ca0-29d5-428e-a705-22b2ad91d02e)
 
-### `npm test`
+**User dashboard medications**
+![image](https://github.com/user-attachments/assets/3074e319-8780-4764-b613-860118d60ae6)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**User dashboard daily water**
+![image](https://github.com/user-attachments/assets/91934cc4-05c4-4c55-9d25-ae9c84d1ab1c)
 
-### `npm run build`
+**User dashboard exercises**
+![image](https://github.com/user-attachments/assets/0e6abf2d-628c-406c-b5fa-08e2959ca4f7)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**User dashboard new journal entry**
+![image](https://github.com/user-attachments/assets/4a5b25cd-8e9a-431f-b405-5cb8231b024f)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**User dashboard past journal entries**
+![image](https://github.com/user-attachments/assets/201c310b-9803-464e-a5d6-23fac4fefb0b)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**User dashboard data trends**
+![image](https://github.com/user-attachments/assets/c3b5262b-bdde-4aec-a67e-c1b5aa40e465)
 
-### `npm run eject`
+![image](https://github.com/user-attachments/assets/b53f7351-608a-42f3-b5a2-61324db090b2)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![image](https://github.com/user-attachments/assets/47bdc72c-0718-477c-8aaa-fcea49a321a1)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Admin dashboard**
+![image](https://github.com/user-attachments/assets/3f196e20-163f-4b83-822b-8081cb5e2545)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 2. Linkki sovellukseen (Front-end)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Frontend - (Netlify)**  
+  [https://healthdiary.netlify.app](https://healthdiary.netlify.app)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## 3. Linkki käytössä olevaan Back-end-sovellukseen/API
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **Backend (Azure web service)** 
+  [https://hdserver.azurewebsites.net/api](https://healthserver-fucqceehg7e2e4ef.swedencentral-01.azurewebsites.net/api)
 
-### Analyzing the Bundle Size
+- **DB hosted at Azure (Azure Database for MySQL server)**
+  [https://healthdiary.mysql.database.azure.com](https://healthdiary.mysql.database.azure.com)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## 4. Linkki API-dokumentaatioon (apidoc)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 5. Tietokannan kuvaus
 
-### Deployment
+- Sovelluksessa käytetään MySQL/MariaDB-tietokantaa (tai vastaavaa). Alla taulut:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+  ![image](https://github.com/user-attachments/assets/8d70a38b-5bab-4c43-bcf2-e3e68d1b62a9)
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 6. Toiminnallisuudet
+
+**(Landing page / login / signup)**
+
+- Rekisteröityminen (Sign up)
+- Kirjautuminen (Login) + JWT/istunnonhallinta
+
+**(User dashboard)**
+
+- Sovellus on täysin responsiivinen
+- Daily summary
+- Päiväkirjamerkintöjen luonti + seuranta
+- Vedenkulutuksen syöttö ja seuranta
+- Lääkitysten syöttö ja seuranta + poistaminen
+- Liikuntasuoritusten kirjaaminen + seuranta (+ trendi data)
+- Unen syöttö ja seuranta (+ trendi data)
+- Mood syöttö ja seuranta (+ trendi data)
+
+**(Admin dashboard)**
+
+- Näkee kaikki käyttäjät
+- Poista käyttäjiä
+
+**(Ei lisätty mutta valmiina)**
+
+- Käyttäjät voisivat poistaa omaa dataa (esim liikuntasuoritukset, päiväkirjamerkinnät yms, Ei lisätty kun aika loppu kesken)
+- Enemmän toiminnallisuuksia admin dashboardiin, hän pystyisi muokata / poista mitä vaan dataa)
+- Profilli jossa käyttäjä voi vaihtaa salasanaa tai sähköposti osoitetta (ei lisätty kun vaatis sähköpostin verifikointia yms)
+
+---
+
+## 7. Mahdolliset tunnetut bugit/ongelmat
+
+- En ole ehtinyt hirveesti testaila sen jälkeen kun olen hostannut front + back + db, joten varmasti ilmestyy haasteita
+- Tällä hetkellä admin ei pysty käyttää äppiä, vaan kirjautuu suoraan admin paneliin
+- Jos lisää vahingossa ylimääräisen tai liikaa vettä, ei pysty painaa mitään "-" nappia että voisi korjata syötteen
+- Jos käyttäjä unohtaa salasanan, ei ole mitään mitä voidaan tehdä asialle paitsi deletoida käyttäjä
+
+---
+
+## 8. Referenssit, käytetyt tutoriaalit, kirjastot
+
+
+- React (frontend)
+- Shadcn/ui inspired components (taken from my other projects i have worked on)
+    - tabs.jsx complied of component pieces from other projects
+- Recharts
+- Express (backend)
+- MySQL / MariaDB (tietokanta)
+- Axios (API-kutsut)
+- Node.js (palvelinympäristö)
+- React Router (reititys)
+- Netlify (Front-end-hosting)
+- Azure (Back-end-hosting)
+- Azure (DB-hosting)
+
+**Ongelmanratkaisut**
+
+- Opettajien materiaalit (github)
+- Stackoverfull (bugfixing help, React Router, CORS)
+- ChatGPT (bugfixing help - React Router issues, CORS issues, Axios help, Hosting help)
+- Reddit (Hosting issues help)
+
+
+---
+
+## Kiitos! 
+  
+
+
+
