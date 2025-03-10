@@ -1,6 +1,8 @@
 # Health Diary - CheckYoSelf
 
-Tämä on Health Diary -sovelluksen README-tiedosto.
+Tämä on Health Diary -sovelluksen README-tiedosto.li
+
+[Link to backend repo](https://github.com/oliverhazley/server-school/tree/main)
 
 ## 1. Kuvakaappaukset käyttöliitymästä
 
