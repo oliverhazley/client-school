@@ -38,6 +38,9 @@ Tämä on Health Diary -sovelluksen README-tiedosto.
 
 ![image](https://github.com/user-attachments/assets/47bdc72c-0718-477c-8aaa-fcea49a321a1)
 
+**Admin dashboard**
+![image](https://github.com/user-attachments/assets/3f196e20-163f-4b83-822b-8081cb5e2545)
+
 
 ---
 
