@@ -59,10 +59,6 @@ Tämä on Health Diary -sovelluksen README-tiedosto.
 - **DB hosted at Azure (Azure Database for MySQL server)**
   [https://healthdiary.mysql.database.azure.com](https://healthdiary.mysql.database.azure.com)
 
----
-
-## 4. Linkki API-dokumentaatioon (apidoc)
-
 
 ---
 
