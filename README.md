@@ -49,6 +49,9 @@ Tämä on Health Diary -sovelluksen README-tiedosto.
 - **Frontend - (Netlify)**  
   [https://healthdiary.netlify.app](https://healthdiary.netlify.app)
 
+  ![image](https://github.com/user-attachments/assets/99fd7464-2f17-4dd6-bf10-3063d8ee3314)
+
+
 ---
 
 ## 3. Linkki käytössä olevaan Back-end-sovellukseen/API
