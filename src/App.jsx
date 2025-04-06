@@ -6,11 +6,11 @@ import axios from 'axios'
 
 // we import our pages/components from other files
 import LandingPage from './components/pages/LandingPage.jsx'
-import LoginPage from './components/pages/LoginPage'
-import SignUpPage from './components/pages/SignUpPage'
-import Dashboard from './components/pages/dashboard'
-import AdminPage from './components/pages/AdminPage'
-import NavBar from './components/NavBar'
+import LoginPage from './components/pages/LoginPage.jsx'
+import SignUpPage from './components/pages/SignUpPage.jsx'
+import Dashboard from './components/pages/dashboard.jsx'
+import AdminPage from './components/pages/AdminPage.jsx'
+import NavBar from './components/NavBar.jsx'
 
 // this component is the main part of our application
 // it sets up our routes and decides where the user goes
