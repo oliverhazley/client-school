@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CheckYoSelf – Health Diary Testiraportit</title>
+  <style>
+    /* RESET & BODY */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #1e293b; /* slate-800 */
+      color: #f1f5f9;           /* slate-100 */
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      background-color: #334155; /* slate-700 */
+      border-bottom: 4px solid mediumslateblue;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.3rem;
+      color: mediumslateblue;
+    }
+    header p {
+      color: #cbd5e1; /* slate-200 */
+      font-weight: 300;
+      margin-top: 0.4rem;
+    }
+
+    /* NAVIGATION */
+    nav {
+      background-color: #0f172a; /* slate-900 */
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      padding: 1rem;
+    }
+    nav a {
+      text-decoration: none;
+      background-color: #475569;   /* slate-600 */
+      color: #f1f5f9;
+      font-weight: 600;
+      padding: 0.6rem 1.2rem;
+      border-radius: 9999px; /* fully rounded for pill shape */
+      transition: background-color 0.3s;
+    }
+    nav a:hover {
+      background-color: mediumslateblue;
+      color: #fff;
+    }
+
+    /* MAIN CONTAINER & CARD */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    .card {
+      background-color: #334155; /* slate-700 */
+      margin-bottom: 3rem;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    }
+    .card h2 {
+      margin-bottom: 1rem;
+      padding-left: 0.5rem;
+      border-left: 6px solid mediumslateblue;
+      font-size: 1.3rem;
+      color: #e0e7ff;
+    }
+
+    /* HEADINGS & SPACERS */
+    h3 {
+      color: #93c5fd; /* sky-200 */
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* CODE STYLING */
+    /* Inline code => small pill style */
+    code:not(pre code) {
+      background-color: #1e293b; /* slate-800 */
+      color: #f1f5f9;
+      border-radius: 4px;
+      padding: 0.2rem 0.4rem;
+      font-size: 0.95rem;
+      display: inline-block;
+      margin: 0 0.1rem;
+      white-space: nowrap;
+    }
+    /* Multi-line code blocks => bigger box with border-left */
+    pre {
+      background-color: #1e293b;
+      padding: 1rem;
+      border-radius: 4px;
+      border-left: 4px solid mediumslateblue;
+      overflow-x: auto;
+      margin: 1rem 0;
+      color: #f1f5f9;
+    }
+    pre code {
+      display: block;
+      white-space: pre;
+    }
+
+    /* IMAGES */
+    img {
+      display: block;
+      max-width: 100%;
+      margin-top: 1rem;
+      border: 2px solid #64748b;
+      border-radius: 0.5rem;
+    }
+
+    /* LINKS */
+    a {
+      color: lightskyblue;
+      word-wrap: break-word;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* LISTS */
+    ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+      list-style-type: disc;
+    }
+    ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+      list-style-type: decimal;
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <h1>CheckYoSelf's Health Diary Case Testing</h1>
+  </header>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="#t1">Tehtävä 1</a>
+    <a href="#t2">Tehtävä 2</a>
+    <a href="#t3">Tehtävä 3</a>
+    <a href="#t4">Tehtävä 4</a>
+    <a href="#t5">Tehtävä 5</a>
+    <a href="#t6">Tehtävä 6</a>
+  </nav>
+
+  <div class="container">
+    <!-- TEHTÄVÄ 1 -->
+    <div class="card" id="t1">
+      <h2>Tehtävä 1 – Ympäristön valmistelu ja työkalujen asennus</h2>
+      <p><strong>Projektin kansio:</strong> <code>client-school</code><br/>
+      <strong>Käyttöjärjestelmä:</strong> <em>Windows</em></p>
+
+      <h3>1. Kansiorakenne</h3>
+      <p>Luotiin kansiot:</p>
+      <ul>
+        <li><code>tests/</code> → testitiedostoille</li>
+        <li><code>outputs/</code> → testien tulosteille</li>
+      </ul>
+
+      <h3>2. Virtuaaliympäristö</h3>
+      <pre>python -m venv .venv
+.venv\Scripts\activate
+</pre>
+
+      <h3>3. Asennetut työkalut</h3>
+      <pre>pip install robotframework
+pip install robotframework-browser
+rfbrowser init
+pip install robotframework-requests
+pip install robotframework-crypto
+pip install robotframework-tidy
+</pre>
+
+      <h3>4. .gitignore sisältö</h3>
+      <pre>.venv/
+.env
+outputs/
+</pre>
+    </div>
+
+    <!-- TEHTÄVÄ 2 -->
+    <div class="card" id="t2">
+      <h2>Tehtävä 2 – Kirjautumistesti</h2>
+      <p><strong>Tarkoitus:</strong> Testata että käyttäjä voi kirjautua Health Diary -sovellukseen. <br> <br> Frontend ei käytä <code>name</code> tai <code>id</code> attribuutteja, joten käytettiin kenttien järjestystä:</p>
+      <ul>
+        <li><code>input >> nth=0</code> → käyttäjänimi</li>
+        <li><code>input >> nth=1</code> → salasana</li>
+        <li><code>text=login</code> → napin tunnistus</li>
+      </ul>
+
+      <h3>Testin vaiheet:</h3>
+      <ol>
+        <li>Avaa kirjautumissivu</li>
+        <li>Täyttää tunnukset</li>
+        <li>Klikkaa login</li>
+        <li>Varmistaa, että "log in" teksti katoaa (eli käyttäjä pääsi sisään)</li>
+      </ol>
+
+      <h3>Tiedosto: <code>tests/login.robot</code></h3>
+      <pre>*** Settings ***
+Library    Browser
+
+*** Test Cases ***
+Login To Health Diary
+    New Browser    headless=false
+    New Page    https://healthdiary.netlify.app/login
+    Fill Text    input >> nth=0    test1234
+    Fill Text    input >> nth=1    test1234
+    Click    text=login
+    Wait For Elements State    text=log in    hidden    timeout=5s
+</pre>
+
+      <p><strong>Ajo PowerShellissa:</strong></p>
+      <pre>robot --outputdir outputs tests/login.robot</pre>
+
+      <p><strong>Outcome:</strong>
+        <a href="https://github.com/oliverhazley/client-school/tree/master/outputs/Case2" target="_blank">Case 2</a>
+      </p>
+
+      <img src="https://github.com/oliverhazley/client-school/blob/master/tests/test-images/logintest.PNG?raw=true" alt="Login test image"/>
+    </div>
+
+    <!-- TEHTÄVÄ 3 -->
+    <div class="card" id="t3">
+      <h2>Tehtävä 3 – Weblomakkeen testaus (Selenium Web Form)</h2>
+      <p>Testattiin Seleniumin esimerkkisivun lomakekenttiä:<br/>
+      <a href="https://www.selenium.dev/selenium/web/web-form.html" target="_blank">
+        https://www.selenium.dev/selenium/web/web-form.html
+      </a></p>
+
+      <h3>Testatut kentät:</h3>
+      <ul>
+        <li>Tekstikenttä (<code>my-text</code>)</li>
+        <li>Salasana (<code>my-password</code>)</li>
+        <li>Tekstialue (<code>my-textarea</code>)</li>
+        <li>Valintalista (<code>my-select</code>)</li>
+        <li>Checkbox (valittiin toinen: <code>nth=1</code>)</li>
+        <li>Radiopainike (valittiin toinen: <code>nth=1</code>)</li>
+        <li>Päivämääräkenttä (<code>my-date</code>)</li>
+        <li>Lomakkeen lähetys</li>
+      </ul>
+
+      <h3>Tiedosto: <code>tests/form_test.robot</code></h3>
+      <pre>*** Settings ***
+Library    Browser
+
+*** Test Cases ***
+Test Selenium Web Form
+    New Browser    headless=false
+    New Page    https://www.selenium.dev/selenium/web/web-form.html
+
+    # Fill the text input
+    Fill Text    input[name="my-text"]    Hello Robot
+
+    # Fill the password field
+    Fill Text    input[name="my-password"]    secret123
+
+    # Fill the text area
+    Fill Text    textarea[name="my-textarea"]    This is a message
+
+    # Select from dropdown
+    Select Options By    select[name="my-select"]    label    One
+
+    # Check the second checkbox
+    Check Checkbox    input[name="my-check"] >> nth=1
+
+    # Click the second radio button
+    Click    input[name="my-radio"] >> nth=1
+
+    # Fill the date field
+    Fill Text    input[name="my-date"]    2023-12-31
+
+    # Submit the form
+    Click    button
+    Wait For Elements State    text=Form submitted    visible
+</pre>
+
+      <p><strong>Ajo PowerShellissa:</strong></p>
+      <pre>robot --outputdir outputs tests/form_test.robot</pre>
+
+      <p><strong>Outcome:</strong>
+        <a href="https://github.com/oliverhazley/client-school/tree/master/outputs/Case3" target="_blank">Case 3</a>
+      </p>
+
+      <img src="https://github.com/oliverhazley/client-school/blob/master/tests/test-images/form_test.PNG?raw=true" alt="Form test image"/>
+    </div>
+
+    <!-- TEHTÄVÄ 4 -->
+    <div class="card" id="t4">
+      <h2>Tehtävä 4: Päiväkirjamerkinnän lomakkeen testaus</h2>
+      <p><strong>Tavoite:</strong> Automaattisesti testata, että käyttäjä voi täyttää ja lähettää uuden päiväkirjamerkinnän onnistuneesti sovelluksen Dashboard-näkymässä.</p>
+
+      <h3>Testin tiedot</h3>
+      <ul>
+        <li><strong>Testitiedosto:</strong> <code>tests/add_entry.robot</code></li>
+        <li><strong>Tarkoitus:</strong> Varmistaa, että kirjautunut käyttäjä voi:
+          <ul>
+            <li>täyttää liukusäätimet (unet, mieliala, paino)</li>
+            <li>kirjoittaa tekstikenttään muistiinpanon</li>
+            <li>klikata “+ add entry” -painiketta</li>
+            <li>nähdä onnistumisilmoituksen (“Journal entry added!”)</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3>Testin kulku</h3>
+      <ol>
+        <li>Avaa selain ja siirry kirjautumissivulle.</li>
+        <li>Syötä testikäyttäjän tunnukset (<code>test1234</code> / <code>test1234</code>).</li>
+        <li>Kirjaudu sisään ja odota, että Dashboard latautuu.</li>
+        <li>Skrollaa alas kohtaan <strong>New Journal Entry</strong>.</li>
+        <li>Täytä kentät (Sleep Hours: 7, Mood: 5, Weight: 70, Notes: “Slept well…”)</li>
+        <li>Klikkaa “+ add entry” -painiketta.</li>
+        <li>Odota vahvistustekstiä: <code>Journal entry added!</code></li>
+      </ol>
+
+      <h3>Onnistumisen kriteeri</h3>
+      <p>Testi katsotaan onnistuneeksi, jos kaikki lomakekentät täyttyvät, merkintä lähetetään onnistuneesti ja vahvistusteksti näkyy sivulla.</p>
+
+      <h3>Koodipätkä (<code>tests/add_entry.robot</code>)</h3>
+      <pre>*** Settings ***
+Library    Browser
+
+*** Test Cases ***
+Add New Journal Entry
+    # 1) Open browser & go to login
+    New Browser    headless=false
+    New Page    https://healthdiary.netlify.app/login
+
+    # 2) Log in
+    Fill Text    input >> nth=0    test1234
+    Fill Text    input >> nth=1    test1234
+    Click        text=login
+
+    # 3) Wait for Dashboard
+    Wait For Elements State    text=New Journal Entry    visible
+    Scroll To                  text=New Journal Entry
+
+    # 4) Fill each range input as if it were text
+    Fill Text    input[type="range"] >> nth=1    7
+    Fill Text    input[type="range"] >> nth=2    5
+    Fill Text    input[type="range"] >> nth=3    70
+
+    # 5) Fill the notes
+    Fill Text    textarea    Slept well and felt okay
+
+    # 6) Click the button
+    Click    text=+ add entry
+
+    # 7) Confirm success
+    Wait For Elements State    text=Journal entry added!    visible
+</pre>
+
+      <h3>Ajo PowerShellissa:</h3>
+      <pre>robot --outputdir outputs tests/add_entry.robot</pre>
+
+      <p><strong>Outcome:</strong>
+        <a href="https://github.com/oliverhazley/client-school/tree/master/outputs/Case3" target="_blank">Case 3</a>
+      </p>
+
+      <img src="https://github.com/oliverhazley/client-school/blob/master/tests/test-images/entry_test.PNG?raw=true" alt="Entry test image"/>
+    </div>
+
+    <!-- TEHTÄVÄ 5 -->
+    <div class="card" id="t5">
+      <h2>Tehtävä 5 – Kirjautumistesti .env-tiedoston avulla</h2>
+      <p><strong>Tavoite:</strong> Toteuttaa kirjautumistesti, jossa tunnukset haetaan <code>.env</code>-tiedostosta eikä kovakoodata testiin.</p>
+
+      <h3>1. .env-tiedosto projektin juuressa</h3>
+      <pre>DIARY_USERNAME=placeholder
+DIARY_PASSWORD=placeholder
+</pre>
+      <p>(<em>.env lisättiin .gitignoreen, jotta se ei mene julkisesti repositorioon</em>)</p>
+
+      <h3>2. Python-tiedosto muuttujien lukemiseen</h3>
+      <p>Tiedosto: <code>variables/credentials.py</code></p>
+      <pre>import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+USERNAME = os.getenv("DIARY_USERNAME")
+PASSWORD = os.getenv("DIARY_PASSWORD")
+
+if USERNAME is None or PASSWORD is None:
+    raise ValueError("Missing USERNAME or PASSWORD in .env file.")
+</pre>
+
+      <h3>3. Kirjautumistesti Robot Frameworkilla</h3>
+      <p>Tiedosto: <code>tests/login_env.robot</code></p>
+      <pre>*** Settings ***
+Library     Browser
+Variables   ../variables/credentials.py
+
+*** Test Cases ***
+Login With Env Credentials
+    New Browser    headless=false
+    New Page    https://healthdiary.netlify.app/login
+    Fill Text    input >> nth=0    ${USERNAME}
+    Fill Text    input >> nth=1    ${PASSWORD}
+    Click        text=login
+    Wait For Elements State    text=New Journal Entry    visible
+</pre>
+
+      <h3>Ajo PowerShellissa:</h3>
+      <pre>robot --outputdir outputs tests/login_env.robot</pre>
+
+      <p><strong>Outcome:</strong>
+        <a href="https://github.com/oliverhazley/client-school/tree/master/outputs/Case4" target="_blank">Case 4</a>
+      </p>
+      <img src="https://github.com/oliverhazley/client-school/blob/master/tests/test-images/env_login_test.PNG?raw=true" alt="Login env test image"/>
+    </div>
+
+    <!-- TEHTÄVÄ 6 -->
+    <div class="card" id="t6">
+      <h2>Tehtävä 6 – Kirjautuminen salatuilla tunnuksilla (CryptoLibrary)</h2>
+      <p><strong>Tavoite:</strong> Testata kirjautumista sovellukseen, jossa käyttäjätunnus ja salasana on <em>salattu</em> <code>cryptography.fernet</code>-kirjastolla. Salauksen purku tehdään <code>encrypted_credentials.py</code>-tiedostossa.</p>
+
+      <h3>Testin tiedot</h3>
+      <ul>
+        <li><strong>Testitiedosto:</strong> <code>tests/login_encrypted.robot</code></li>
+        <li><strong>Muuttujatiedosto:</strong> <code>variables/encrypted_credentials.py</code></li>
+        <li><strong>Käytetty salaus:</strong> <code>Fernet</code> (symmetrinen avain)</li>
+      </ul>
+
+      <h3>Testin kulku</h3>
+      <ol>
+        <li><code>encrypted_credentials.py</code> sisältää salatut tunnukset ja salausavaimen</li>
+        <li>Testi lataa muuttujat <code>USERNAME</code> ja <code>PASSWORD</code> salauksen purun jälkeen</li>
+        <li>Avaa kirjautumissivun</li>
+        <li>Täyttää kirjautumistiedot ja painaa "login"</li>
+        <li>Odottaa, että <strong>New Journal Entry</strong> -otsikko ilmestyy</li>
+      </ol>
+
+      <h3>Muuttujatiedosto (<code>variables/encrypted_credentials.py</code>)</h3>
+      <pre>from cryptography.fernet import Fernet
+
+KEY = "Sbu4DBk1y4b0hoqUjDy1dtvXFfm5292GUWD2MCyr7Qw="
+ENC_USER = "gAAAAABn8qOcJS3m37pCOgGdD3E9KNlV_IhGRzlTNo4zTtbLmRGGoqyLnjrE6vfRvDn0EJWYF4r-Um0WVFzrdnVt9cihINzBhg=="
+ENC_PASS = "gAAAAABn8qOcKAG2xBduvvEDV9Kieo27u1YsBxH3bC4i1sFthys8RfWTuVM1UdhQPy3HcZMCw42epPCVXXmN-b0dauEzim1dXg=="
+
+cipher = Fernet(KEY)
+
+USERNAME = cipher.decrypt(ENC_USER.encode()).decode()
+PASSWORD = cipher.decrypt(ENC_PASS.encode()).decode()
+</pre>
+
+      <h3>Testitiedosto (<code>tests/login_encrypted.robot</code>)</h3>
+      <pre>*** Settings ***
+Library    Browser
+Variables  ../variables/encrypted_credentials.py
+
+*** Test Cases ***
+Login With Encrypted Credentials
+    New Browser    headless=false
+    New Page    https://healthdiary.netlify.app/login
+    Fill Text    input >> nth=0    ${USERNAME}
+    Fill Text    input >> nth=1    ${PASSWORD}
+    Click        text=login
+    Wait For Elements State    text=New Journal Entry    visible
+</pre>
+
+      <h3>.gitignore</h3>
+      <p>Lisättiin <code>encrypted_credentials.py</code> tiedostoon:</p>
+      <pre>variables/encrypted_credentials.py</pre>
+
+      <h3>Ajokomento</h3>
+      <pre>robot --outputdir outputs tests/login_env.robot</pre>
+
+      <p><strong>Outcome:</strong>
+        <a href="https://github.com/oliverhazley/client-school/tree/master/outputs/Case5" target="_blank">Case 5</a>
+      </p>
+      <img src="https://github.com/oliverhazley/client-school/blob/master/tests/test-images/encrypt_login.PNG?raw=true" alt="Encrypted login test"/>
+    </div>
+  </div><!-- container end -->
+</body>
+</html>
