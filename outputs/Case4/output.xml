@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.1 on win32)" generated="2025-04-06T19:19:39.631182" rpa="false" schemaversion="5">
+<suite id="s1" name="Add Entry" source="C:\Users\olive\PycharmProjects\Ohjelmointi1\client-school\tests\add_entry.robot">
+<test id="s1-t1" name="Add New Journal Entry" line="5">
+<kw name="New Browser" owner="Browser">
+<msg time="2025-04-06T19:19:39.853821" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\olive\\PycharmProjects\\Ohjelmointi1\\client-school\\outputs\\Case4\\browser\\traces\\temp\\140f29f3-6767-4afa-ae1c-09b2ef8e181a"}</msg>
+<msg time="2025-04-06T19:19:39.878904" level="INFO">Starting Browser process C:\Users\olive\PycharmProjects\Ohjelmointi1\client-school\.venv\Lib\site-packages\Browser\wrapper\index.js using port 61028</msg>
+<msg time="2025-04-06T19:19:39.879015" level="INFO">Node startup parameters: ['node', 'C:\\Users\\olive\\PycharmProjects\\Ohjelmointi1\\client-school\\.venv\\Lib\\site-packages\\Browser\\wrapper\\index.js', '61028']</msg>
+<msg time="2025-04-06T19:19:41.463824" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\Users\\olive\\PycharmProjects\\Ohjelmointi1\\client-school\\outputs\\Case4\\browser\\traces\\temp\\140f29f3-6767-4afa-ae1c-09b2ef8e181a"}</msg>
+<arg>headless=false</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2025-04-06T19:19:39.852764" elapsed="1.611324"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2025-04-06T19:19:42.390629" level="INFO">Successfully initialized new page object and opened url: https://healthdiary.netlify.app/login</msg>
+<msg time="2025-04-06T19:19:42.390751" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>https://healthdiary.netlify.app/login</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-04-06T19:19:41.476685" elapsed="0.914282"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-04-06T19:19:42.463883" level="INFO">Fills the text 'test1234' in the given field.</msg>
+<arg>input &gt;&gt; nth=0</arg>
+<arg>test1234</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-04-06T19:19:42.462845" elapsed="0.283075"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-04-06T19:19:42.788072" level="INFO">Fills the text 'test1234' in the given field.</msg>
+<arg>input &gt;&gt; nth=1</arg>
+<arg>test1234</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-04-06T19:19:42.787190" elapsed="0.023398"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2025-04-06T19:19:42.829236" level="INFO">Clicks the element 'text=login'.</msg>
+<arg>text=login</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-04-06T19:19:42.828444" elapsed="0.067703"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-04-06T19:19:44.031423" level="INFO">Waited for Element with selector text=New Journal Entry at state visible</msg>
+<arg>text=New Journal Entry</arg>
+<arg>visible</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-04-06T19:19:42.945057" elapsed="1.086734"/>
+</kw>
+<kw name="Scroll To" owner="Browser">
+<msg time="2025-04-06T19:19:44.076123" level="INFO">JavaScript executed successfully.</msg>
+<msg time="2025-04-06T19:19:44.076226" level="INFO">JavaScript executed successfully.</msg>
+<msg time="2025-04-06T19:19:44.101173" level="INFO">JavaScript executed successfully.</msg>
+<msg time="2025-04-06T19:19:44.101278" level="INFO">JavaScript executed successfully.</msg>
+<msg time="2025-04-06T19:19:44.113870" level="INFO">JavaScript executed successfully.</msg>
+<arg>text=New Journal Entry</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Scrolls an element or the page to an absolute position based on given coordinates.</doc>
+<status status="PASS" start="2025-04-06T19:19:44.032359" elapsed="0.081755"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-04-06T19:19:44.115363" level="INFO">Fills the text '7' in the given field.</msg>
+<arg>input[type="range"] &gt;&gt; nth=1</arg>
+<arg>7</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-04-06T19:19:44.114534" elapsed="0.011869"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-04-06T19:19:44.127729" level="INFO">Fills the text '5' in the given field.</msg>
+<arg>input[type="range"] &gt;&gt; nth=2</arg>
+<arg>5</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-04-06T19:19:44.126905" elapsed="0.017806"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-04-06T19:19:44.146107" level="INFO">Fills the text '70' in the given field.</msg>
+<arg>input[type="range"] &gt;&gt; nth=3</arg>
+<arg>70</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-04-06T19:19:44.145254" elapsed="0.012122"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-04-06T19:19:44.158786" level="INFO">Fills the text 'Slept well and felt okay' in the given field.</msg>
+<arg>textarea</arg>
+<arg>Slept well and felt okay</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-04-06T19:19:44.157906" elapsed="0.030070"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2025-04-06T19:19:44.189770" level="INFO">Clicks the element 'text=+ add entry'.</msg>
+<arg>text=+ add entry</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-04-06T19:19:44.188472" elapsed="0.108112"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-04-06T19:19:44.447905" level="INFO">Waited for Element with selector text=Journal entry added! at state visible</msg>
+<arg>text=Journal entry added!</arg>
+<arg>visible</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-04-06T19:19:44.297951" elapsed="0.150173"/>
+</kw>
+<msg time="2025-04-06T19:19:44.452946" level="INFO">Set timeout to: 10000</msg>
+<msg time="2025-04-06T19:19:44.471561" level="INFO">Switching context to context=42374f8a-e1c4-4bd4-9575-a57f4840c814 in CURRENT</msg>
+<msg time="2025-04-06T19:19:44.484793" level="INFO">Successfully changed active context: context=42374f8a-e1c4-4bd4-9575-a57f4840c814</msg>
+<msg time="2025-04-06T19:19:44.581725" level="INFO">Successfully closed Context</msg>
+<status status="PASS" start="2025-04-06T19:19:39.851427" elapsed="4.597187"/>
+</test>
+<status status="PASS" start="2025-04-06T19:19:39.633225" elapsed="4.955308"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Add Entry" id="s1" pass="1" fail="0" skip="0">Add Entry</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

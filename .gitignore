@@ -24,7 +24,7 @@ yarn-error.log*
 
 .venv/
 .env
-outputs/
+
 
 
 variables/crypt.py
