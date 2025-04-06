@@ -109,8 +109,11 @@ Ajo PowerShellissa:
 
 Outcome:
 
-- [Case 2](https://github.com/oliverhazley/client-school/tree/master/outputs/Case2)
-- ![Login test image](https://github.com/oliverhazley/client-school/blob/master/tests/test-images/logintest.PNG?raw=true)
+[Case 2](https://github.com/oliverhazley/client-school/tree/master/outputs/Case2)
+
+<br>
+
+![Login test image](https://github.com/oliverhazley/client-school/blob/master/tests/test-images/logintest.PNG?raw=true)
 
 
 <hr style="height:8px; background-color:mediumslateblue; border:none;" />
@@ -177,8 +180,11 @@ Ajo PowerShellissa:
 
 Outcome: 
 
-- [Case 3](https://github.com/oliverhazley/client-school/tree/master/outputs/Case3)
-- ![Login test image](https://github.com/oliverhazley/client-school/blob/master/tests/test-images/form_test.PNG?raw=true)
+[Case 3](https://github.com/oliverhazley/client-school/tree/master/outputs/Case3)
+
+<br>
+
+![Login test image](https://github.com/oliverhazley/client-school/blob/master/tests/test-images/form_test.PNG?raw=true)
 
 <hr style="height:8px; background-color:mediumslateblue; border:none;" />
 
@@ -272,8 +278,11 @@ Ajo PowerShellissa:
 
 Outcome:
 
-- [Case 3](https://github.com/oliverhazley/client-school/tree/master/outputs/Case3)
-- ![Login test image](https://github.com/oliverhazley/client-school/blob/master/tests/test-images/entry_test.PNG?raw=true)
+[Case 3](https://github.com/oliverhazley/client-school/tree/master/outputs/Case3)
+
+<br>
+
+![Login test image](https://github.com/oliverhazley/client-school/blob/master/tests/test-images/entry_test.PNG?raw=true)
 
 
 <hr style="height:8px; background-color:mediumslateblue; border:none;" />
@@ -344,8 +353,11 @@ Ajo PowerShellissa:
 
 Outcome:
 
-- [Case 4](https://github.com/oliverhazley/client-school/tree/master/outputs/Case4)
-- ![Login test image](https://github.com/oliverhazley/client-school/blob/master/tests/test-images/env_login_test.PNG?raw=true)
+[Case 4](https://github.com/oliverhazley/client-school/tree/master/outputs/Case4)
+
+<br>
+
+![Login test image](https://github.com/oliverhazley/client-school/blob/master/tests/test-images/env_login_test.PNG?raw=true)
 
 <hr style="height:8px; background-color:mediumslateblue; border:none;" />
 
@@ -418,8 +430,11 @@ Ajo PowerShellissa:
 
 Outcome:
 
-- [Case 5](https://github.com/oliverhazley/client-school/tree/master/outputs/Case5)
-- ![Login test image](https://github.com/oliverhazley/client-school/blob/master/tests/test-images/encrypt_login.PNG?raw=true)
+[Case 5](https://github.com/oliverhazley/client-school/tree/master/outputs/Case5)
+
+<br>
+
+![Login test image](https://github.com/oliverhazley/client-school/blob/master/tests/test-images/encrypt_login.PNG?raw=true)
 
 
 
