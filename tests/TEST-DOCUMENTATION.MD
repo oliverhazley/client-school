@@ -109,7 +109,7 @@ Ajo PowerShellissa:
 
 Outcome:
 
-![Login test image](\test-images\logintest.PNG)
+![Login test image](https://github.com/oliverhazley/client-school/blob/master/tests/test-images/encrypt_login.PNG?raw=true)
 
 
 <hr style="height:8px; background-color:mediumslateblue; border:none;" />
