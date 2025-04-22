@@ -159,6 +159,7 @@
     <a href="#t4">Tehtävä 4</a>
     <a href="#t5">Tehtävä 5</a>
     <a href="#t6">Tehtävä 6</a>
+    <a href="#t7">Tehtävä 9</a>
   </nav>
 
   <div class="container">
@@ -507,6 +508,106 @@ Login With Encrypted Credentials
       
       <img src="https://github.com/oliverhazley/client-school/blob/master/tests/test-images/encrypt_login.PNG?raw=true" alt="Encrypted login test"/>
     </div>
+
+        <!-- TEHTÄVÄ 7 -->
+    <div class="card" id="t7">
+      <h2>Tehtävä 9 – Backend API (Testcase 7)</h2>
+      <p><strong>Tavoite:</strong> Testata Health Diaryn backend-rajapinnan toiminnallisuus suoraan HTTP-tasolla Robot Frameworkin RequestsLibrarylla. Päätin tehdä kaikki testaukset
+      yhteen testiin. Olin aika varma niiden onnistumisesta.</p>
+
+      <h3>Testitiedot</h3>
+      <ul>
+        <li><strong>Testitiedosto:</strong> <code>tests/backend_api.robot</code></li>
+        <li><strong>Output-kansio:</strong> <code>outputs/Case7</code></li>
+      </ul>
+
+      <h3>Testin vaiheet</h3>
+      <ol>
+        <li>Luodaan sessio ja autentikoidaan ylläpitäjä (<code>admin/admin123</code>).</li>
+        <li><code>GET /users</code> palauttaa käyttäjälistan.</li>
+        <li><code>POST /entries</code> luo uuden päiväkirjamerkinnän ja <code>GET /entries</code> varmistaa sen.</li>
+        <li><code>POST /water</code> luo uuden vesilokin ja <code>GET /water</code> varmistaa sen.</li>
+        <li><code>GET /exercises</code> palauttaa harjoituslistan.</li>
+      </ol>
+
+      <h3>Koodipätkä (<code>tests/backend_api.robot</code>)</h3>
+      <pre>
+*** Settings ***
+Library           RequestsLibrary
+Library           DateTime
+Library           Collections
+Variables         ../variables/credentials.py
+
+Suite Setup       Setup API
+Suite Teardown    Delete All Sessions
+
+*** Variables ***
+${BASE}           https://healthserver-fucqceehg7e2e4ef.swedencentral-01.azurewebsites.net/api
+${TOKEN}          ${EMPTY}
+${ENTRY_ID}       ${EMPTY}
+${WATER_ID}       ${EMPTY}
+
+*** Keywords ***
+Setup API
+    Create Session    api    ${BASE}
+    Authenticate As Admin
+
+Authenticate As Admin
+    ${body}=    Create Dictionary    username=admin    password=admin123
+    ${resp}=    POST On Session      api    /auth/login    json=${body}
+    Should Be Equal As Integers      ${resp.status_code}    200
+    ${t}=       Set Variable         ${resp.json()['token']}
+    Set Suite Variable               ${TOKEN}    ${t}
+
+*** Test Cases ***
+Get All Users
+    ${headers}=    Create Dictionary    Authorization=Bearer ${TOKEN}
+    ${resp}=       GET On Session       api    /users    headers=${headers}
+    Should Be Equal As Integers         ${resp.status_code}    200
+    Should Not Be Empty                 ${resp.json()}
+
+Create Diary Entry
+    ${today}=      Get Current Date    result_format=%Y-%m-%d
+    ${entry}=      Create Dictionary   entry_date=${today}    mood=5    weight=70    sleep_hours=7    notes=API Robot entry
+    ${resp}=       POST On Session     api    /entries    json=${entry}    headers=${headers}
+    Should Be Equal As Integers         ${resp.status_code}    201
+    ${ENTRY_ID}=   Set Variable         ${resp.json()['entry_id']}
+
+Get Diary Entries
+    ${resp}=       GET On Session       api    /entries    headers=${headers}
+    Should Be Equal As Integers         ${resp.status_code}    200
+    Should Contain                      ${resp.text}    "entry_id":${ENTRY_ID}
+
+Create Water Log
+    ${water}=      Create Dictionary   consumption_date=${today}    cups=3
+    ${resp}=       POST On Session     api    /water      json=${water}    headers=${headers}
+    Should Be Equal As Integers         ${resp.status_code}    201
+    ${WATER_ID}=   Set Variable         ${resp.json()['water_id']}
+
+Get Water Logs
+    ${resp}=       GET On Session       api    /water    headers=${headers}
+    Should Be Equal As Integers         ${resp.status_code}    200
+    Should Contain                      ${resp.text}    "water_id":${WATER_ID}
+
+List Exercises
+    ${resp}=       GET On Session       api    /exercises    headers=${headers}
+    Should Be Equal As Integers         ${resp.status_code}    200
+    Should Not Be Empty                 ${resp.json()}
+      </pre>
+
+      <h3>Ajo PowerShellissa:</h3>
+      <pre>robot --outputdir outputs/Case7 tests/backend_api.robot</pre>
+
+      <p><strong>Case 7 log:</strong>
+        <a href="https://oliverhazley.github.io/client-school/outputs/Case7/log.html" target="_blank">View</a>
+      </p>
+      <p><strong>Case 7 report:</strong>
+        <a href="https://oliverhazley.github.io/client-school/outputs/Case7/report.html" target="_blank">View</a>
+      </p>
+
+       <img src="https://github.com/oliverhazley/client-school/blob/master/tests/test-images/test7.png?raw=true" alt="Encrypted login test"/>
+    </div>
+
   </div><!-- container end -->
 </body>
 </html>
