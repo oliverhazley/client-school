@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.1 on win32)" generated="2025-04-22T23:08:32.287124" rpa="false" schemaversion="5">
+<suite id="s1" name="Backend Api" source="C:\Users\olive\PycharmProjects\Ohjelmointi1\client-school\tests\backend_api.robot">
+<kw name="Setup API" type="SETUP">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-04-22T23:08:32.985155" level="INFO">Creating Session using : alias=api, url=https://healthserver-fucqceehg7e2e4ef.swedencentral-01.azurewebsites.net/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api</arg>
+<arg>${BASE}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-04-22T23:08:32.984808" elapsed="0.001006"/>
+</kw>
+<kw name="Authenticate As Admin">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-04-22T23:08:32.987613" level="INFO">${body} = {'username': 'admin', 'password': 'admin123'}</msg>
+<var>${body}</var>
+<arg>username=admin</arg>
+<arg>password=admin123</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-04-22T23:08:32.987061" elapsed="0.000609"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-04-22T23:08:33.714336" level="INFO">POST Request : url=https://healthserver-fucqceehg7e2e4ef.swedencentral-01.azurewebsites.net/api/auth/login 
+ path_url=/api/auth/login 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '45', 'Content-Type': 'application/json'} 
+ body=b'{"username": "admin", "password": "admin123"}' 
+ </msg>
+<msg time="2025-04-22T23:08:33.714520" level="INFO">POST Response : url=https://healthserver-fucqceehg7e2e4ef.swedencentral-01.azurewebsites.net/api/auth/login 
+ status=200, reason=OK 
+ headers={'Content-Length': '324', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 22 Apr 2025 20:08:32 GMT', 'ETag': 'W/"144-QplUm+OLTXKY8TiumBg+UNZ1/MM"', 'Vary': 'Origin', 'x-ms-middleware-request-id': '00000000-0000-0000-0000-000000000000', 'request-context': 'appId=cid-v1:', 'X-Powered-By': 'Express'} 
+ body={"user_id":15,"username":"admin","email":"admin@gmail.com","user_level":"admin","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNSwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwidXNlcl9sZXZlbCI6ImFkbWluIiwiaWF0IjoxNzQ1MzUyNTEyLCJleHAiOjE3NDU0Mzg5MTJ9.l2mvrXdt5LFnDiI7xvCo8BiIOPIPUSHEARrGPiTa_2U"} 
+ </msg>
+<msg time="2025-04-22T23:08:33.714661" level="INFO">C:\Users\olive\PycharmProjects\Ohjelmointi1\client-school\.venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'healthserver-fucqceehg7e2e4ef.swedencentral-01.azurewebsites.net'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-04-22T23:08:33.715156" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>/auth/login</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-04-22T23:08:32.987864" elapsed="0.727339"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-04-22T23:08:33.716156" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-04-22T23:08:33.715401" elapsed="0.000865"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-22T23:08:33.717124" level="INFO">${t} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNSwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwidXNlcl9sZXZlbCI6ImFkbWluIiwiaWF0IjoxNzQ1MzUyNTEyLCJleHAiOjE3NDU0Mzg5MTJ9.l2mvrXdt5L...</msg>
+<var>${t}</var>
+<arg>${resp.json()['token']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-22T23:08:33.716460" elapsed="0.000695"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-04-22T23:08:33.717445" level="INFO">${TOKEN} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNSwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwidXNlcl9sZXZlbCI6ImFkbWluIiwiaWF0IjoxNzQ1MzUyNTEyLCJleHAiOjE3NDU0Mzg5MTJ9.l2mvrXdt5L...</msg>
+<arg>${TOKEN}</arg>
+<arg>${t}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-04-22T23:08:33.717275" elapsed="0.000232"/>
+</kw>
+<status status="PASS" start="2025-04-22T23:08:32.986670" elapsed="0.730903"/>
+</kw>
+<status status="PASS" start="2025-04-22T23:08:32.982847" elapsed="0.734770"/>
+</kw>
+<test id="s1-t1" name="Get All Users" line="29">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-04-22T23:08:33.718391" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNSwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwidXNlcl9sZXZlbCI6ImFkbWluIiwiaWF0IjoxNzQ1MzUyNTEyLCJleHAiO...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-04-22T23:08:33.718164" elapsed="0.000261"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-04-22T23:08:33.770955" level="INFO">GET Request : url=https://healthserver-fucqceehg7e2e4ef.swedencentral-01.azurewebsites.net/api/users 
+ path_url=/api/users 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNSwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwidXNlcl9sZXZlbCI6ImFkbWluIiwiaWF0IjoxNzQ1MzUyNTEyLCJleHAiOjE3NDU0Mzg5MTJ9.l2mvrXdt5LFnDiI7xvCo8BiIOPIPUSHEARrGPiTa_2U'} 
+ body=None 
+ </msg>
+<msg time="2025-04-22T23:08:33.771072" level="INFO">GET Response : url=https://healthserver-fucqceehg7e2e4ef.swedencentral-01.azurewebsites.net/api/users 
+ status=200, reason=OK 
+ headers={'Content-Length': '1033', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 22 Apr 2025 20:08:32 GMT', 'ETag': 'W/"409-l46E3mUV/+ESSzaBzvaD0m+Xtmg"', 'Vary': 'Origin', 'x-ms-middleware-request-id': '00000000-0000-0000-0000-000000000000', 'request-context': 'appId=cid-v1:', 'X-Powered-By': 'Express'} 
+ body=[{"user_id":1,"username":"johndoe","email":"johndoe@example.com","user_level":"regular"},{"user_id":2,"username":"janedoe","email":"janedoe@example.com","user_level":"admin"},{"user_id":3,"username":"alice_jones","email":"alice@example.com","user_level":"regular"},{"user_id":4,"username":"bob_brown","email":"bob@example.com","user_level":"regular"},{"user_id":9,"username":"testman","email":"testone@gmail.com","user_level":"regular"},{"user_id":10,"username":"testing","email":"haha@gmail.com","user_level":"regular"},{"user_id":14,"username":"test1234","email":"test1234@gmail.com","user_level":"regular"},{"user_id":15,"username":"admin","email":"admin@gmail.com","user_level":"admin"},{"user_id":16,"username":"test12345","email":"test@testtest.com","user_level":"regular"},{"user_id":17,"username":"DROP","email":"test@test.com","user_level":"regular"},{"user_id":22,"username":"fsajfsf","email":"afjsf@gmail.com","user_level":"regular"},{"user_id":23,"username":"sfjaofjsdo","email":"fefaf@gmail.com","user_level":"regular"}] 
+ </msg>
+<msg time="2025-04-22T23:08:33.771190" level="INFO">C:\Users\olive\PycharmProjects\Ohjelmointi1\client-school\.venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'healthserver-fucqceehg7e2e4ef.swedencentral-01.azurewebsites.net'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-04-22T23:08:33.772199" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>/users</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-04-22T23:08:33.718693" elapsed="0.053575"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-04-22T23:08:33.773166" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-04-22T23:08:33.772603" elapsed="0.000679"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-22T23:08:33.774128" level="INFO">${users} = [{'user_id': 1, 'username': 'johndoe', 'email': 'johndoe@example.com', 'user_level': 'regular'}, {'user_id': 2, 'username': 'janedoe', 'email': 'janedoe@example.com', 'user_level': 'admin'}, {'user_id...</msg>
+<var>${users}</var>
+<arg>${resp.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-22T23:08:33.773547" elapsed="0.000613"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2025-04-22T23:08:33.774718" level="INFO">Length is 12.</msg>
+<arg>${users}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2025-04-22T23:08:33.774502" elapsed="0.000291"/>
+</kw>
+<status status="PASS" start="2025-04-22T23:08:33.717678" elapsed="0.057354"/>
+</test>
+<test id="s1-t2" name="Create Diary Entry" line="36">
+<kw name="Get Current Date" owner="DateTime">
+<msg time="2025-04-22T23:08:33.776599" level="INFO">${today} = 2025-04-22</msg>
+<var>${today}</var>
+<arg>result_format=%Y-%m-%d</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<status status="PASS" start="2025-04-22T23:08:33.776323" elapsed="0.000304"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-04-22T23:08:33.777178" level="INFO">${entry} = {'entry_date': '2025-04-22', 'mood': '5', 'weight': '70', 'sleep_hours': '7', 'notes': 'API Robot entry'}</msg>
+<var>${entry}</var>
+<arg>entry_date=${today}</arg>
+<arg>mood=5</arg>
+<arg>weight=70</arg>
+<arg>sleep_hours=7</arg>
+<arg>notes=API Robot entry</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-04-22T23:08:33.776890" elapsed="0.000315"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-04-22T23:08:33.777572" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNSwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwidXNlcl9sZXZlbCI6ImFkbWluIiwiaWF0IjoxNzQ1MzUyNTEyLCJleHAiO...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-04-22T23:08:33.777394" elapsed="0.000203"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-04-22T23:08:33.823193" level="INFO">POST Request : url=https://healthserver-fucqceehg7e2e4ef.swedencentral-01.azurewebsites.net/api/entries 
+ path_url=/api/entries 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNSwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwidXNlcl9sZXZlbCI6ImFkbWluIiwiaWF0IjoxNzQ1MzUyNTEyLCJleHAiOjE3NDU0Mzg5MTJ9.l2mvrXdt5LFnDiI7xvCo8BiIOPIPUSHEARrGPiTa_2U', 'Content-Length': '105', 'Content-Type': 'application/json'} 
+ body=b'{"entry_date": "2025-04-22", "mood": "5", "weight": "70", "sleep_hours": "7", "notes": "API Robot entry"}' 
+ </msg>
+<msg time="2025-04-22T23:08:33.823325" level="INFO">POST Response : url=https://healthserver-fucqceehg7e2e4ef.swedencentral-01.azurewebsites.net/api/entries 
+ status=201, reason=Created 
+ headers={'Content-Length': '45', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 22 Apr 2025 20:08:32 GMT', 'ETag': 'W/"2d-J2PLMdTABeK58Bxy3gUHyDKnPM8"', 'Vary': 'Origin', 'x-ms-middleware-request-id': '00000000-0000-0000-0000-000000000000', 'request-context': 'appId=cid-v1:', 'X-Powered-By': 'Express'} 
+ body={"message":"New entry created","entry_id":53} 
+ </msg>
+<msg time="2025-04-22T23:08:33.823408" level="INFO">C:\Users\olive\PycharmProjects\Ohjelmointi1\client-school\.venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'healthserver-fucqceehg7e2e4ef.swedencentral-01.azurewebsites.net'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-04-22T23:08:33.824200" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>/entries</arg>
+<arg>json=${entry}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-04-22T23:08:33.777742" elapsed="0.046527"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-04-22T23:08:33.825298" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>201</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-04-22T23:08:33.824577" elapsed="0.000809"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-22T23:08:33.826567" level="INFO">${id} = 53</msg>
+<var>${id}</var>
+<arg>${resp.json()['entry_id']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-22T23:08:33.825764" elapsed="0.000857"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-04-22T23:08:33.827045" level="INFO">${ENTRY_ID} = 53</msg>
+<arg>${ENTRY_ID}</arg>
+<arg>${id}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-04-22T23:08:33.826851" elapsed="0.000233"/>
+</kw>
+<status status="PASS" start="2025-04-22T23:08:33.775856" elapsed="0.051446"/>
+</test>
+<test id="s1-t3" name="Get Diary Entries" line="45">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-04-22T23:08:33.828480" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNSwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwidXNlcl9sZXZlbCI6ImFkbWluIiwiaWF0IjoxNzQ1MzUyNTEyLCJleHAiO...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-04-22T23:08:33.828246" elapsed="0.000269"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-04-22T23:08:33.907458" level="INFO">GET Request : url=https://healthserver-fucqceehg7e2e4ef.swedencentral-01.azurewebsites.net/api/entries 
+ path_url=/api/entries 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNSwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwidXNlcl9sZXZlbCI6ImFkbWluIiwiaWF0IjoxNzQ1MzUyNTEyLCJleHAiOjE3NDU0Mzg5MTJ9.l2mvrXdt5LFnDiI7xvCo8BiIOPIPUSHEARrGPiTa_2U'} 
+ body=None 
+ </msg>
+<msg time="2025-04-22T23:08:33.907694" level="INFO">GET Response : url=https://healthserver-fucqceehg7e2e4ef.swedencentral-01.azurewebsites.net/api/entries 
+ status=200, reason=OK 
+ headers={'Content-Length': '6610', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 22 Apr 2025 20:08:32 GMT', 'ETag': 'W/"19d2-QyHExTVVItFzyyY+vImkcGfYo6Q"', 'Vary': 'Origin', 'x-ms-middleware-request-id': '00000000-0000-0000-0000-000000000000', 'request-context': 'appId=cid-v1:', 'X-Powered-By': 'Express'} 
+ body=[{"entry_id":1,"user_id":1,"entry_date":"2024-01-10T00:00:00.000Z","mood":"Happy","weight":"70.50","sleep_hours":8,"notes":"Had a great workout session","created_at":"2024-01-10T20:00:00.000Z"},{"entry_id":2,"user_id":2,"entry_date":"2024-01-11T00:00:00.000Z","mood":"Satisfied","weight":"65.00","sleep_hours":7,"notes":"Met with friends, had a good time","created_at":"2024-01-11T21:00:00.000Z"},{"entry_id":3,"user_id":3,"entry_date":"2024-01-12T00:00:00.000Z","mood":"Tired","weight":"68.00","sleep_hours":6,"notes":"Work was demanding","created_at":"2024-01-12T22:00:00.000Z"},{"entry_id":4,"user_id":4,"entry_date":"2024-01-13T00:00:00.000Z","mood":"Energetic","weight":"55.00","sleep_hours":9,"notes":"Went for a morning run","created_at":"2024-01-13T18:00:00.000Z"},{"entry_id":5,"user_id":4,"entry_date":"2024-01-14T00:00:00.000Z","mood":"Relaxed","weight":"75.00","sleep_hours":8,"notes":"Spent the day reading","created_at":"2024-01-14T19:00:00.000Z"},{"entry_id":21,"user_id":14,"entry_date":"2025-02-23T00:00:00.000Z","mood":"7","weight":"80.00","sleep_hours":6,"notes":"today i was working on finishing my project","created_at":"2025-02-23T13:36:23.000Z"},{"entry_id":22,"user_id":14,"entry_date":"2025-03-04T00:00:00.000Z","mood":"10","weight":"90.00","sleep_hours":10,"notes":"good","created_at":"2025-03-04T13:45:52.000Z"},{"entry_id":23,"user_id":14,"entry_date":"2025-03-05T00:00:00.000Z","mood":"7","weight":"91.00","sleep_hours":8,"notes":"Getting closer to finnishing my project","created_at":"2025-03-05T14:33:21.000Z"},{"entry_id":28,"user_id":14,"entry_date":"2025-03-06T00:00:00.000Z","mood":"10","weight":"95.00","sleep_hours":10,"notes":"Getting even closer to finnishing my project","created_at":"2025-03-05T14:55:31.000Z"},{"entry_id":29,"user_id":14,"entry_date":"2025-03-06T00:00:00.000Z","mood":"1","weight":"95.00","sleep_hours":12,"notes":"testing functionalities again","created_at":"2025-03-06T15:11:02.000Z"},{"entry_id":30,"user_id":14,"entry_date":"2025-03-07T00:00:00.000Z","mood":"5","weight":"70.00","sleep_hours":7,"notes":"testing","created_at":"2025-03-07T15:47:23.000Z"},{"entry_id":31,"user_id":14,"entry_date":"2025-03-07T00:00:00.000Z","mood":"5","weight":"70.00","sleep_hours":7,"notes":"","created_at":"2025-03-07T19:54:29.000Z"},{"entry_id":32,"user_id":14,"entry_date":"2025-03-07T00:00:00.000Z","mood":"5","weight":"70.00","sleep_hours":7,"notes":"‘ OR ‘1’=’1","created_at":"2025-03-07T19:54:33.000Z"},{"entry_id":33,"user_id":14,"entry_date":"2025-03-10T00:00:00.000Z","mood":"7","weight":"95.00","sleep_hours":6,"notes":"Today i finished my project. I spent 5 hours bugfixing and trying to merge my project to various hosts. I managed to setup hosting for the DB, the Frontend and the Backend.\n\nThere was a major issue with CORS. I spent 3 hours debugging it. I prompted AI trying to figure out what the issue was.. what couldnt i see? I searched StackOverflow, and almost gave up.. Then i noticed it.. a Trailing slash on my origin domain for the cors exceptions... What a silly mistake that cost me hours of my precious time..\n\nAnyway, its done now!","created_at":"2025-03-10T14:02:57.000Z"},{"entry_id":35,"user_id":14,"entry_date":"2025-03-11T00:00:00.000Z","mood":"8","weight":"90.00","sleep_hours":8,"notes":"täfjsadfjsafoisdofasfoaf","created_at":"2025-03-11T09:19:01.000Z"},{"entry_id":36,"user_id":14,"entry_date":"2025-03-12T00:00:00.000Z","mood":"5","weight":"100.00","sleep_hours":11,"notes":"wjfiawejfoiajfoieawj","created_at":"2025-03-12T10:44:45.000Z"},{"entry_id":37,"user_id":14,"entry_date":"2025-03-13T00:00:00.000Z","mood":"7","weight":"92.00","sleep_hours":8,"notes":"test","created_at":"2025-03-13T17:34:12.000Z"},{"entry_id":38,"user_id":14,"entry_date":"2025-03-15T00:00:00.000Z","mood":"9","weight":"90.00","sleep_hours":10,"notes":"Working on completing the vaatimuusmäärittely","created_at":"2025-03-15T13:33:52.000Z"},{"entry_id":39,"user_id":14,"entry_date":"2025-03-17T00:00:00.000Z","mood":"8","weight":"70.00","sleep_hours":9,"notes":"hyvin kulki uinti","created_at":"2025-03-17T18:33:57.000Z"},{"entry_id":40,"user_id":14,"entry_date":"2025-03-23T00:00:00.000Z","mood":"5","weight":"70.00","sleep_hours":7,"notes":"test","created_at":"2025-03-23T19:08:37.000Z"},{"entry_id":41,"user_id":14,"entry_date":"2025-03-31T00:00:00.000Z","mood":"5","weight":"94.00","sleep_hours":7,"notes":"sfqwef","created_at":"2025-03-31T06:56:04.000Z"},{"entry_id":42,"user_id":14,"entry_date":"2025-04-06T00:00:00.000Z","mood":"5","weight":"70.00","sleep_hours":7,"notes":"Slept well and felt okay","created_at":"2025-04-06T14:21:18.000Z"},{"entry_id":43,"user_id":14,"entry_date":"2025-04-06T00:00:00.000Z","mood":"5","weight":"70.00","sleep_hours":7,"notes":"Slept well and felt okay","created_at":"2025-04-06T16:19:42.000Z"},{"entry_id":44,"user_id":15,"entry_date":"2025-04-22T00:00:00.000Z","mood":"5","weight":"70.00","sleep_hours":7,"notes":"API Robot entry","created_at":"2025-04-22T19:02:06.000Z"},{"entry_id":45,"user_id":15,"entry_date":"2025-04-22T00:00:00.000Z","mood":"5","weight":"70.00","sleep_hours":7,"notes":"API Robot entry","created_at":"2025-04-22T19:12:31.000Z"},{"entry_id":46,"user_id":15,"entry_date":"2025-04-22T00:00:00.000Z","mood":"5","weight":"70.00","sleep_hours":7,"notes":"API Robot entry","created_at":"2025-04-22T19:17:50.000Z"},{"entry_id":47,"user_id":15,"entry_date":"2025-04-22T00:00:00.000Z","mood":"5","weight":"70.00","sleep_hours":7,"notes":"API Robot entry","created_at":"2025-04-22T19:50:15.000Z"},{"entry_id":48,"user_id":15,"entry_date":"2025-04-22T00:00:00.000Z","mood":"5","weight":"70.00","sleep_hours":7,"notes":"API Robot entry","created_at":"2025-04-22T19:52:11.000Z"},{"entry_id":49,"user_id":15,"entry_date":"2025-04-22T00:00:00.000Z","mood":"5","weight":"70.00","sleep_hours":7,"notes":"API Robot entry","created_at":"2025-04-22T19:57:45.000Z"},{"entry_id":50,"user_id":15,"entry_date":"2025-04-22T00:00:00.000Z","mood":"5","weight":"70.00","sleep_hours":7,"notes":"API Robot entry","created_at":"2025-04-22T20:03:33.000Z"},{"entry_id":51,"user_id":15,"entry_date":"2025-04-22T00:00:00.000Z","mood":"5","weight":"70.00","sleep_hours":7,"notes":"API Robot entry","created_at":"2025-04-22T20:04:59.000Z"},{"entry_id":52,"user_id":15,"entry_date":"2025-04-22T00:00:00.000Z","mood":"5","weight":"70.00","sleep_hours":7,"notes":"API Robot entry","created_at":"2025-04-22T20:05:56.000Z"},{"entry_id":53,"user_id":15,"entry_date":"2025-04-22T00:00:00.000Z","mood":"5","weight":"70.00","sleep_hours":7,"notes":"API Robot entry","created_at":"2025-04-22T20:08:32.000Z"}] 
+ </msg>
+<msg time="2025-04-22T23:08:33.908120" level="INFO">C:\Users\olive\PycharmProjects\Ohjelmointi1\client-school\.venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'healthserver-fucqceehg7e2e4ef.swedencentral-01.azurewebsites.net'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-04-22T23:08:33.908814" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>/entries</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-04-22T23:08:33.828904" elapsed="0.079947"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-04-22T23:08:33.910150" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-04-22T23:08:33.909117" elapsed="0.001215"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${resp.text}</arg>
+<arg>"entry_id":${ENTRY_ID}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-22T23:08:33.910874" elapsed="0.001496"/>
+</kw>
+<status status="PASS" start="2025-04-22T23:08:33.827914" elapsed="0.084741"/>
+</test>
+<test id="s1-t4" name="Create Water Log" line="51">
+<kw name="Get Current Date" owner="DateTime">
+<msg time="2025-04-22T23:08:33.914346" level="INFO">${today} = 2025-04-22</msg>
+<var>${today}</var>
+<arg>result_format=%Y-%m-%d</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<status status="PASS" start="2025-04-22T23:08:33.914087" elapsed="0.000290"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-04-22T23:08:33.914867" level="INFO">${water} = {'consumption_date': '2025-04-22', 'cups': '3'}</msg>
+<var>${water}</var>
+<arg>consumption_date=${today}</arg>
+<arg>cups=3</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-04-22T23:08:33.914585" elapsed="0.000317"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-04-22T23:08:33.915440" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNSwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwidXNlcl9sZXZlbCI6ImFkbWluIiwiaWF0IjoxNzQ1MzUyNTEyLCJleHAiO...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-04-22T23:08:33.915173" elapsed="0.000303"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-04-22T23:08:33.973936" level="INFO">POST Request : url=https://healthserver-fucqceehg7e2e4ef.swedencentral-01.azurewebsites.net/api/water 
+ path_url=/api/water 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNSwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwidXNlcl9sZXZlbCI6ImFkbWluIiwiaWF0IjoxNzQ1MzUyNTEyLCJleHAiOjE3NDU0Mzg5MTJ9.l2mvrXdt5LFnDiI7xvCo8BiIOPIPUSHEARrGPiTa_2U', 'Content-Length': '47', 'Content-Type': 'application/json'} 
+ body=b'{"consumption_date": "2025-04-22", "cups": "3"}' 
+ </msg>
+<msg time="2025-04-22T23:08:33.974182" level="INFO">POST Response : url=https://healthserver-fucqceehg7e2e4ef.swedencentral-01.azurewebsites.net/api/water 
+ status=201, reason=Created 
+ headers={'Content-Length': '71', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 22 Apr 2025 20:08:32 GMT', 'ETag': 'W/"47-xsxsInFaHF6uMAJLwgzQSOfByy8"', 'Vary': 'Origin', 'x-ms-middleware-request-id': '00000000-0000-0000-0000-000000000000', 'request-context': 'appId=cid-v1:', 'X-Powered-By': 'Express'} 
+ body={"water_id":48,"user_id":15,"consumption_date":"2025-04-22","cups":"3"} 
+ </msg>
+<msg time="2025-04-22T23:08:33.974331" level="INFO">C:\Users\olive\PycharmProjects\Ohjelmointi1\client-school\.venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'healthserver-fucqceehg7e2e4ef.swedencentral-01.azurewebsites.net'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-04-22T23:08:33.975050" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>/water</arg>
+<arg>json=${water}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-04-22T23:08:33.915777" elapsed="0.059335"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-04-22T23:08:33.976006" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>201</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-04-22T23:08:33.975460" elapsed="0.000623"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-22T23:08:33.976753" level="INFO">${wid} = 48</msg>
+<var>${wid}</var>
+<arg>${resp.json()['water_id']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-22T23:08:33.976285" elapsed="0.000495"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-04-22T23:08:33.977254" level="INFO">${WATER_ID} = 48</msg>
+<arg>${WATER_ID}</arg>
+<arg>${wid}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-04-22T23:08:33.977076" elapsed="0.000216"/>
+</kw>
+<status status="PASS" start="2025-04-22T23:08:33.913637" elapsed="0.063931"/>
+</test>
+<test id="s1-t5" name="Get Water Logs" line="60">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-04-22T23:08:33.979335" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNSwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwidXNlcl9sZXZlbCI6ImFkbWluIiwiaWF0IjoxNzQ1MzUyNTEyLCJleHAiO...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-04-22T23:08:33.978972" elapsed="0.000411"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-04-22T23:08:34.036308" level="INFO">GET Request : url=https://healthserver-fucqceehg7e2e4ef.swedencentral-01.azurewebsites.net/api/water 
+ path_url=/api/water 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNSwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwidXNlcl9sZXZlbCI6ImFkbWluIiwiaWF0IjoxNzQ1MzUyNTEyLCJleHAiOjE3NDU0Mzg5MTJ9.l2mvrXdt5LFnDiI7xvCo8BiIOPIPUSHEARrGPiTa_2U'} 
+ body=None 
+ </msg>
+<msg time="2025-04-22T23:08:34.036456" level="INFO">GET Response : url=https://healthserver-fucqceehg7e2e4ef.swedencentral-01.azurewebsites.net/api/water 
+ status=200, reason=OK 
+ headers={'Content-Length': '5696', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 22 Apr 2025 20:08:32 GMT', 'ETag': 'W/"1640-0jzsfXjTjtWUO035oWaHnoQBvaw"', 'Vary': 'Origin', 'x-ms-middleware-request-id': '00000000-0000-0000-0000-000000000000', 'request-context': 'appId=cid-v1:', 'X-Powered-By': 'Express'} 
+ body=[{"water_id":1,"user_id":14,"consumption_date":"2025-03-04T00:00:00.000Z","cups":2,"created_at":"2025-03-07T13:34:26.000Z"},{"water_id":2,"user_id":14,"consumption_date":"2025-03-04T00:00:00.000Z","cups":1,"created_at":"2025-03-07T13:34:29.000Z"},{"water_id":3,"user_id":14,"consumption_date":"2025-03-04T00:00:00.000Z","cups":1,"created_at":"2025-03-07T13:34:49.000Z"},{"water_id":4,"user_id":14,"consumption_date":"2025-03-04T00:00:00.000Z","cups":1,"created_at":"2025-03-07T13:34:52.000Z"},{"water_id":5,"user_id":14,"consumption_date":"2025-03-05T00:00:00.000Z","cups":4,"created_at":"2025-03-07T13:55:24.000Z"},{"water_id":6,"user_id":14,"consumption_date":"2025-03-05T00:00:00.000Z","cups":1,"created_at":"2025-03-07T14:31:56.000Z"},{"water_id":7,"user_id":14,"consumption_date":"2025-03-05T00:00:00.000Z","cups":4,"created_at":"2025-03-07T14:32:00.000Z"},{"water_id":8,"user_id":14,"consumption_date":"2025-03-06T00:00:00.000Z","cups":3,"created_at":"2025-03-07T14:32:04.000Z"},{"water_id":9,"user_id":14,"consumption_date":"2025-03-06T00:00:00.000Z","cups":3,"created_at":"2025-03-07T14:32:07.000Z"},{"water_id":10,"user_id":14,"consumption_date":"2025-03-06T00:00:00.000Z","cups":3,"created_at":"2025-03-07T15:09:51.000Z"},{"water_id":11,"user_id":14,"consumption_date":"2025-03-07T00:00:00.000Z","cups":1,"created_at":"2025-03-07T15:39:28.000Z"},{"water_id":12,"user_id":14,"consumption_date":"2025-03-07T00:00:00.000Z","cups":2,"created_at":"2025-03-07T15:39:32.000Z"},{"water_id":13,"user_id":14,"consumption_date":"2025-03-07T00:00:00.000Z","cups":4,"created_at":"2025-03-07T16:00:09.000Z"},{"water_id":14,"user_id":14,"consumption_date":"2025-03-07T00:00:00.000Z","cups":2,"created_at":"2025-03-07T16:44:26.000Z"},{"water_id":15,"user_id":14,"consumption_date":"2025-03-07T00:00:00.000Z","cups":1,"created_at":"2025-03-07T16:49:04.000Z"},{"water_id":16,"user_id":14,"consumption_date":"2025-03-07T00:00:00.000Z","cups":3,"created_at":"2025-03-07T18:50:58.000Z"},{"water_id":17,"user_id":14,"consumption_date":"2025-03-10T00:00:00.000Z","cups":1,"created_at":"2025-03-10T13:59:10.000Z"},{"water_id":18,"user_id":14,"consumption_date":"2025-03-10T00:00:00.000Z","cups":5,"created_at":"2025-03-10T13:59:14.000Z"},{"water_id":19,"user_id":14,"consumption_date":"2025-03-10T00:00:00.000Z","cups":1,"created_at":"2025-03-10T13:59:17.000Z"},{"water_id":20,"user_id":14,"consumption_date":"2025-03-10T00:00:00.000Z","cups":1,"created_at":"2025-03-10T13:59:21.000Z"},{"water_id":21,"user_id":14,"consumption_date":"2025-03-10T00:00:00.000Z","cups":2,"created_at":"2025-03-10T13:59:25.000Z"},{"water_id":22,"user_id":14,"consumption_date":"2025-03-10T00:00:00.000Z","cups":4,"created_at":"2025-03-10T14:29:19.000Z"},{"water_id":25,"user_id":14,"consumption_date":"2025-03-11T00:00:00.000Z","cups":2,"created_at":"2025-03-11T09:00:08.000Z"},{"water_id":26,"user_id":14,"consumption_date":"2025-03-11T00:00:00.000Z","cups":1,"created_at":"2025-03-11T09:17:37.000Z"},{"water_id":27,"user_id":14,"consumption_date":"2025-03-11T00:00:00.000Z","cups":2,"created_at":"2025-03-11T09:17:42.000Z"},{"water_id":28,"user_id":14,"consumption_date":"2025-03-11T00:00:00.000Z","cups":3,"created_at":"2025-03-11T09:17:47.000Z"},{"water_id":29,"user_id":14,"consumption_date":"2025-03-12T00:00:00.000Z","cups":2,"created_at":"2025-03-12T10:44:19.000Z"},{"water_id":30,"user_id":14,"consumption_date":"2025-03-13T00:00:00.000Z","cups":2,"created_at":"2025-03-13T17:33:48.000Z"},{"water_id":31,"user_id":14,"consumption_date":"2025-03-13T00:00:00.000Z","cups":3,"created_at":"2025-03-13T17:33:51.000Z"},{"water_id":32,"user_id":14,"consumption_date":"2025-03-15T00:00:00.000Z","cups":2,"created_at":"2025-03-15T13:32:48.000Z"},{"water_id":33,"user_id":14,"consumption_date":"2025-03-15T00:00:00.000Z","cups":3,"created_at":"2025-03-15T13:32:51.000Z"},{"water_id":34,"user_id":14,"consumption_date":"2025-03-16T00:00:00.000Z","cups":1,"created_at":"2025-03-16T15:22:28.000Z"},{"water_id":35,"user_id":14,"consumption_date":"2025-03-17T00:00:00.000Z","cups":1,"created_at":"2025-03-17T07:02:50.000Z"},{"water_id":36,"user_id":14,"consumption_date":"2025-03-17T00:00:00.000Z","cups":2,"created_at":"2025-03-17T07:02:54.000Z"},{"water_id":37,"user_id":14,"consumption_date":"2025-03-19T00:00:00.000Z","cups":2,"created_at":"2025-03-19T07:29:03.000Z"},{"water_id":38,"user_id":14,"consumption_date":"2025-03-31T00:00:00.000Z","cups":4,"created_at":"2025-03-31T06:55:00.000Z"},{"water_id":39,"user_id":15,"consumption_date":"2025-04-22T00:00:00.000Z","cups":3,"created_at":"2025-04-22T19:02:06.000Z"},{"water_id":40,"user_id":15,"consumption_date":"2025-04-22T00:00:00.000Z","cups":3,"created_at":"2025-04-22T19:12:31.000Z"},{"water_id":41,"user_id":15,"consumption_date":"2025-04-22T00:00:00.000Z","cups":3,"created_at":"2025-04-22T19:17:51.000Z"},{"water_id":42,"user_id":15,"consumption_date":"2025-04-22T00:00:00.000Z","cups":3,"created_at":"2025-04-22T19:50:15.000Z"},{"water_id":43,"user_id":15,"consumption_date":"2025-04-22T00:00:00.000Z","cups":8,"created_at":"2025-04-22T19:52:11.000Z"},{"water_id":44,"user_id":15,"consumption_date":"2025-04-22T00:00:00.000Z","cups":8,"created_at":"2025-04-22T19:57:45.000Z"},{"water_id":45,"user_id":15,"consumption_date":"2025-04-22T00:00:00.000Z","cups":3,"created_at":"2025-04-22T20:03:33.000Z"},{"water_id":46,"user_id":15,"consumption_date":"2025-04-22T00:00:00.000Z","cups":8,"created_at":"2025-04-22T20:04:59.000Z"},{"water_id":47,"user_id":15,"consumption_date":"2025-04-22T00:00:00.000Z","cups":3,"created_at":"2025-04-22T20:05:56.000Z"},{"water_id":48,"user_id":15,"consumption_date":"2025-04-22T00:00:00.000Z","cups":3,"created_at":"2025-04-22T20:08:32.000Z"}] 
+ </msg>
+<msg time="2025-04-22T23:08:34.036703" level="INFO">C:\Users\olive\PycharmProjects\Ohjelmointi1\client-school\.venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'healthserver-fucqceehg7e2e4ef.swedencentral-01.azurewebsites.net'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-04-22T23:08:34.037586" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>/water</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-04-22T23:08:33.979901" elapsed="0.057744"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-04-22T23:08:34.038762" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-04-22T23:08:34.037997" elapsed="0.000858"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${resp.text}</arg>
+<arg>"water_id":${WATER_ID}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-22T23:08:34.039190" elapsed="0.000830"/>
+</kw>
+<status status="PASS" start="2025-04-22T23:08:33.978332" elapsed="0.061940"/>
+</test>
+<test id="s1-t6" name="List Exercises" line="66">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-04-22T23:08:34.041872" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNSwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwidXNlcl9sZXZlbCI6ImFkbWluIiwiaWF0IjoxNzQ1MzUyNTEyLCJleHAiO...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-04-22T23:08:34.041502" elapsed="0.000420"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-04-22T23:08:34.120499" level="INFO">GET Request : url=https://healthserver-fucqceehg7e2e4ef.swedencentral-01.azurewebsites.net/api/exercises 
+ path_url=/api/exercises 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNSwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwidXNlcl9sZXZlbCI6ImFkbWluIiwiaWF0IjoxNzQ1MzUyNTEyLCJleHAiOjE3NDU0Mzg5MTJ9.l2mvrXdt5LFnDiI7xvCo8BiIOPIPUSHEARrGPiTa_2U'} 
+ body=None 
+ </msg>
+<msg time="2025-04-22T23:08:34.120687" level="INFO">GET Response : url=https://healthserver-fucqceehg7e2e4ef.swedencentral-01.azurewebsites.net/api/exercises 
+ status=200, reason=OK 
+ headers={'Content-Length': '2219', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 22 Apr 2025 20:08:32 GMT', 'ETag': 'W/"8ab-BQm3TgEtkYhZP0bGTcVOuUblnBs"', 'Vary': 'Origin', 'x-ms-middleware-request-id': '00000000-0000-0000-0000-000000000000', 'request-context': 'appId=cid-v1:', 'X-Powered-By': 'Express'} 
+ body=[{"exercise_id":1,"user_id":1,"type":"Running","duration":30,"intensity":"High","date":"2024-01-10T00:00:00.000Z"},{"exercise_id":2,"user_id":3,"type":"Cycling","duration":45,"intensity":"Medium","date":"2024-01-11T00:00:00.000Z"},{"exercise_id":3,"user_id":2,"type":"Swimming","duration":55,"intensity":"Low","date":"2024-01-12T00:00:00.000Z"},{"exercise_id":4,"user_id":1,"type":"Swimming","duration":30,"intensity":"Medium","date":"2024-01-16T00:00:00.000Z"},{"exercise_id":5,"user_id":3,"type":"Swimming","duration":60,"intensity":"Low","date":"2024-01-18T00:00:00.000Z"},{"exercise_id":6,"user_id":3,"type":"Yoga","duration":50,"intensity":"Low","date":"2024-01-18T00:00:00.000Z"},{"exercise_id":7,"user_id":1,"type":"Weight Training","duration":40,"intensity":"High","date":"2024-01-19T00:00:00.000Z"},{"exercise_id":8,"user_id":14,"type":"Running","duration":20,"intensity":"low","date":"2025-03-05T00:00:00.000Z"},{"exercise_id":9,"user_id":14,"type":"Rowing","duration":32,"intensity":"medium","date":"2025-03-05T00:00:00.000Z"},{"exercise_id":10,"user_id":14,"type":"Typing","duration":180,"intensity":"high","date":"2025-03-06T00:00:00.000Z"},{"exercise_id":11,"user_id":14,"type":"Running","duration":78,"intensity":"medium","date":"2025-03-06T00:00:00.000Z"},{"exercise_id":12,"user_id":14,"type":"Typing ","duration":30,"intensity":"medium","date":"2025-03-07T00:00:00.000Z"},{"exercise_id":13,"user_id":14,"type":"Running","duration":43,"intensity":"medium","date":"2025-03-07T00:00:00.000Z"},{"exercise_id":14,"user_id":14,"type":"Typing with rage","duration":180,"intensity":"high","date":"2025-03-10T00:00:00.000Z"},{"exercise_id":15,"user_id":14,"type":"Running","duration":23,"intensity":"medium","date":"2025-03-10T00:00:00.000Z"},{"exercise_id":17,"user_id":14,"type":"kävely","duration":40,"intensity":"medium","date":"2025-03-11T00:00:00.000Z"},{"exercise_id":18,"user_id":14,"type":"kävely","duration":40,"intensity":"medium","date":"2025-03-15T00:00:00.000Z"},{"exercise_id":19,"user_id":14,"type":"uinti","duration":60,"intensity":"medium","date":"2025-03-17T00:00:00.000Z"},{"exercise_id":20,"user_id":14,"type":"walk","duration":39,"intensity":"medium","date":"2025-03-31T00:00:00.000Z"}] 
+ </msg>
+<msg time="2025-04-22T23:08:34.120849" level="INFO">C:\Users\olive\PycharmProjects\Ohjelmointi1\client-school\.venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'healthserver-fucqceehg7e2e4ef.swedencentral-01.azurewebsites.net'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-04-22T23:08:34.121634" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>/exercises</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-04-22T23:08:34.042233" elapsed="0.079454"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-04-22T23:08:34.122542" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-04-22T23:08:34.122009" elapsed="0.000691"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-22T23:08:34.125964" level="INFO">${exs} = [{'exercise_id': 1, 'user_id': 1, 'type': 'Running', 'duration': 30, 'intensity': 'High', 'date': '2024-01-10T00:00:00.000Z'}, {'exercise_id': 2, 'user_id': 3, 'type': 'Cycling', 'duration': 45, 'inte...</msg>
+<var>${exs}</var>
+<arg>${resp.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-22T23:08:34.123212" elapsed="0.002854"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2025-04-22T23:08:34.126622" level="INFO">Length is 19.</msg>
+<arg>${exs}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2025-04-22T23:08:34.126407" elapsed="0.000276"/>
+</kw>
+<status status="PASS" start="2025-04-22T23:08:34.041029" elapsed="0.085925"/>
+</test>
+<kw name="Delete All Sessions" owner="RequestsLibrary" type="TEARDOWN">
+<msg time="2025-04-22T23:08:34.128351" level="INFO">Deleting All Sessions</msg>
+<doc>Removes all the session objects</doc>
+<status status="PASS" start="2025-04-22T23:08:34.128214" elapsed="0.000262"/>
+</kw>
+<status status="PASS" start="2025-04-22T23:08:32.289218" elapsed="1.839317"/>
+</suite>
+<statistics>
+<total>
+<stat pass="6" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Backend Api" id="s1" pass="6" fail="0" skip="0">Backend Api</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
