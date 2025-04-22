@@ -459,7 +459,7 @@ Testata Health Diaryn backend-rajapinnan toiminnallisuus suoraan HTTP-tasolla Ro
 
 ---
 
-### Testin vaiheet
+### Testin Kulku
 
 1. Luodaan sessio ja autentikoidaan ylläpitäjä (`admin` / `admin123`)  
 2. `GET /users` – tarkistaa, että käyttäjälista palautuu  
@@ -469,7 +469,7 @@ Testata Health Diaryn backend-rajapinnan toiminnallisuus suoraan HTTP-tasolla Ro
 
 ---
 
-### Koodipätkä (`tests/backend_api.robot`)
+### Testitiedosto (`tests/backend_api.robot`)
 
 ```robot
 *** Settings ***
