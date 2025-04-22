@@ -443,3 +443,115 @@ Outcome:
 <hr style="height:8px; background-color:mediumslateblue; border:none;" />
 
 <hr style="height:8px; background-color:mediumslateblue; border:none;" />
+
+
+## Tehtävä 7 – Backend API -testaus Robot Frameworkilla
+
+**Tavoite:**  
+Testata Health Diaryn backend-rajapinnan toiminnallisuus suoraan HTTP-tasolla Robot Frameworkin RequestsLibrarylla.
+
+---
+
+### Testitiedot
+
+- **Testitiedosto:** `tests/backend_api.robot`  
+- **Output-kansio:** `outputs/Case7`
+
+---
+
+### Testin vaiheet
+
+1. Luodaan sessio ja autentikoidaan ylläpitäjä (`admin` / `admin123`)  
+2. `GET /users` – tarkistaa, että käyttäjälista palautuu  
+3. `POST /entries` luo uuden päiväkirjamerkinnän, ja `GET /entries` varmistaa sen läsnäolon  
+4. `POST /water` luo uuden vesilokin, ja `GET /water` varmistaa sen läsnäolon  
+5. `GET /exercises` – tarkistaa, että harjoituslista palautuu  
+
+---
+
+### Koodipätkä (`tests/backend_api.robot`)
+
+```robot
+*** Settings ***
+Library           RequestsLibrary
+Library           DateTime
+Library           Collections
+Variables         ../variables/credentials.py
+
+Suite Setup       Setup API
+Suite Teardown    Delete All Sessions
+
+*** Variables ***
+${BASE}           https://healthserver-fucqceehg7e2e4ef.swedencentral-01.azurewebsites.net/api
+${TOKEN}          ${EMPTY}
+${ENTRY_ID}       ${EMPTY}
+${WATER_ID}       ${EMPTY}
+
+*** Keywords ***
+Setup API
+    Create Session    api    ${BASE}
+    Authenticate As Admin
+
+Authenticate As Admin
+    ${body}=    Create Dictionary    username=admin    password=admin123
+    ${resp}=    POST On Session      api    /auth/login    json=${body}
+    Should Be Equal As Integers      ${resp.status_code}    200
+    ${t}=       Set Variable         ${resp.json()['token']}
+    Set Suite Variable               ${TOKEN}    ${t}
+
+*** Test Cases ***
+Get All Users
+    ${headers}=    Create Dictionary    Authorization=Bearer ${TOKEN}
+    ${resp}=       GET On Session       api    /users    headers=${headers}
+    Should Be Equal As Integers         ${resp.status_code}    200
+    Should Not Be Empty                 ${resp.json()}
+
+Create Diary Entry
+    ${today}=      Get Current Date    result_format=%Y-%m-%d
+    ${entry}=      Create Dictionary   entry_date=${today}    mood=5    weight=70    sleep_hours=7    notes=API Robot entry
+    ${resp}=       POST On Session     api    /entries    json=${entry}    headers=${headers}
+    Should Be Equal As Integers         ${resp.status_code}    201
+    ${ENTRY_ID}=   Set Variable         ${resp.json()['entry_id']}
+
+Get Diary Entries
+    ${resp}=       GET On Session       api    /entries    headers=${headers}
+    Should Be Equal As Integers         ${resp.status_code}    200
+    Should Contain                      ${resp.text}    "entry_id":${ENTRY_ID}
+
+Create Water Log
+    ${water}=      Create Dictionary   consumption_date=${today}    cups=3
+    ${resp}=       POST On Session     api    /water      json=${water}    headers=${headers}
+    Should Be Equal As Integers         ${resp.status_code}    201
+    ${WATER_ID}=   Set Variable         ${resp.json()['water_id']}
+
+Get Water Logs
+    ${resp}=       GET On Session       api    /water    headers=${headers}
+    Should Be Equal As Integers         ${resp.status_code}    200
+    Should Contain                      ${resp.text}    "water_id":${WATER_ID}
+
+List Exercises
+    ${resp}=       GET On Session       api    /exercises    headers=${headers}
+    Should Be Equal As Integers         ${resp.status_code}    200
+    Should Not Be Empty                 ${resp.json()}
+```
+
+Ajo PowerShellissa:
+
+        robot --outputdir outputs/Case7 tests/backend_api.robot
+
+Outcome:
+
+[Case 7](https://github.com/oliverhazley/client-school/tree/master/outputs/Case7)
+
+<br>
+
+![backend test image](https://github.com/oliverhazley/client-school/blob/master/tests/test-images/test7.png?raw=true)
+
+
+
+<hr style="height:8px; background-color:mediumslateblue; border:none;" />
+
+<hr style="height:8px; background-color:mediumslateblue; border:none;" />
+
+<hr style="height:8px; background-color:mediumslateblue; border:none;" />
+
